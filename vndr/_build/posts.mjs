@@ -87,7 +87,6 @@ export const POSTS = [
   <li><strong>Snack machine (non-refrigerated):</strong> the simplest place to start. Shelf-stable stock, nothing to chill.</li>
   <li><strong>Refrigerated snack machine:</strong> fresh food and cold drinks for workplaces and hospitals.</li>
   <li><strong>Drink machine:</strong> high-turnover cold drinks for gyms and active sites.</li>
-  <li><strong>Coffee machine:</strong> daily-habit hot drinks for offices and waiting areas.</li>
   <li><strong>Ramen machine:</strong> a specialty hot meal that stands out, great for students, shifts and late nights.</li>
 </ul>
 <p>Compare them all on our <a href="{{root}}machines/">machines page</a>, or take the <a href="{{root}}quiz/which-vending-machine/">60-second quiz</a>.</p>
@@ -128,7 +127,7 @@ export const POSTS = [
     slug: 'ramen-vending-machines-guide',
     title: 'Ramen vending machines: the complete guide',
     metaTitle: 'Ramen Vending Machines: The Complete Guide (2026) | VNDR',
-    description: 'Everything you need to know about ramen vending machines: how they work, touchscreen vs keypad, best locations, what to stock, running costs and FAQs.',
+    description: 'Everything you need to know about ramen vending machines: how they work, best locations, what to stock, running costs and FAQs.',
     category: 'Machines',
     date: '2026-10-07',
     lede: 'Hot noodles from a machine, at any hour. Here\'s how ramen vending machines work, where they do best, and what to know before you buy one.',
@@ -139,7 +138,7 @@ export const POSTS = [
 
 <h2 id="how">How a ramen vending machine works</h2>
 <ol>
-  <li>The customer chooses their noodles on a touchscreen or keypad.</li>
+  <li>The customer chooses their noodles on the touchscreen.</li>
   <li>They pay at the machine.</li>
   <li>They collect their cup from the pick-up door.</li>
   <li>They fill it at the machine's built-in hot-water station.</li>
@@ -147,18 +146,7 @@ export const POSTS = [
 </ol>
 <p>VNDR's ramen machines have <strong>independent water storage</strong>, so they're refilled rather than plumbed into a water supply. That gives you more freedom over where the machine can go.</p>
 
-<h2 id="models">Touchscreen vs keypad</h2>
-<table>
-  <thead><tr><th></th><th>Touchscreen</th><th>Keypad</th></tr></thead>
-  <tbody>
-    <tr><td>Ordering</td><td>Interactive touchscreen</td><td>Simple keypad</td></tr>
-    <tr><td>Hot water</td><td>Yes</td><td>Yes</td></tr>
-    <tr><td>Online monitoring</td><td>Yes</td><td>Ask us</td></tr>
-    <tr><td>Best for</td><td>High-visibility, "wow" locations</td><td>Practical, high-use locations</td></tr>
-    <tr><td>Price</td><td>From $5,997</td><td>On enquiry</td></tr>
-  </tbody>
-</table>
-<p>See both models in detail on the <a href="{{root}}machines/ramen-vending-machine/">ramen vending machine page</a>.</p>
+<p>See the full specs and features on the <a href="{{root}}machines/ramen-vending-machine/">ramen vending machine page</a>.</p>
 
 <h2 id="why">Why choose ramen over a standard machine?</h2>
 <ul>
@@ -187,7 +175,7 @@ export const POSTS = [
 <h2 id="numbers">Is it profitable?</h2>
 <p>That depends almost entirely on location: daily sales, your price, your product cost and any site commission. Try a few scenarios in the calculator on the <a href="{{root}}machines/ramen-vending-machine/#calculator">ramen machine page</a>, and be conservative with your sales estimate for a brand-new site.</p>
 
-<div class="callout"><b>Thinking about a ramen machine?</b>Tell us where you'd like to put it and we'll help you choose between touchscreen and keypad.<br><a class="btn btn-primary" href="{{root}}index.html?machine=ramen#enquire">Get ramen pricing →</a></div>
+<div class="callout"><b>Thinking about a ramen machine?</b>Tell us where you'd like to put it and we'll help you plan the rest.<br><a class="btn btn-primary" href="{{root}}index.html?machine=ramen#enquire">Get ramen pricing →</a></div>
 `,
     related: ['how-to-find-vending-machine-locations', 'what-to-sell-in-a-vending-machine', 'is-a-vending-machine-business-a-good-idea']
   },
@@ -285,10 +273,10 @@ export const POSTS = [
   <thead><tr><th>Location</th><th>What tends to sell</th></tr></thead>
   <tbody>
     <tr><td>Gyms</td><td>Water, sports drinks, protein shakes and bars</td></tr>
-    <tr><td>Offices</td><td>Coffee, snacks, healthier options, fresh lunch (refrigerated)</td></tr>
+    <tr><td>Offices</td><td>Snacks, healthier options, fresh lunch (refrigerated)</td></tr>
     <tr><td>Universities</td><td>Value snacks, energy drinks, hot noodles</td></tr>
     <tr><td>Warehouses</td><td>Filling snacks, energy drinks, hot meals for shift breaks</td></tr>
-    <tr><td>Hospitals</td><td>Coffee, fresh food, comfort snacks, hot noodles at night</td></tr>
+    <tr><td>Hospitals</td><td>Fresh food, comfort snacks, hot noodles at night</td></tr>
     <tr><td>Apartments &amp; hotels</td><td>Convenience items, personal care, late-night snacks</td></tr>
   </tbody>
 </table>
@@ -298,7 +286,6 @@ export const POSTS = [
   <li><strong><a href="{{root}}machines/snack-vending-machine/">Snack (non-refrigerated)</a>:</strong> chips, chocolate, bars, nuts, lollies, personal-care items</li>
   <li><strong><a href="{{root}}machines/refrigerated-snack-vending-machine/">Refrigerated snack</a>:</strong> sandwiches, salads, yoghurt, chilled snacks, cold drinks</li>
   <li><strong><a href="{{root}}machines/drink-vending-machine/">Drinks</a>:</strong> water, soft drinks, energy and sports drinks, protein shakes</li>
-  <li><strong><a href="{{root}}machines/coffee-vending-machine/">Coffee</a>:</strong> coffee, hot chocolate, tea</li>
   <li><strong><a href="{{root}}machines/ramen-vending-machine/">Ramen</a>:</strong> cup and bowl noodles across mild, spicy, vegetarian and premium</li>
 </ul>
 

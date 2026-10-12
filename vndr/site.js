@@ -10,16 +10,15 @@
 const CATEGORIES = [
   { id: 'ramen',  name: 'Ramen',  blurb: 'Hot noodles on demand. The specialty machine people stop for.' },
   { id: 'snack',  name: 'Snack',  blurb: 'The backbone of vending: chilled or ambient, built to sell every day.' },
-  { id: 'drinks', name: 'Drinks', blurb: 'Cold drinks, high turnover, simple to stock and run.' },
-  { id: 'coffee', name: 'Coffee', blurb: 'Hot drinks at any hour, wherever people start their day.' }
+  { id: 'drinks', name: 'Drinks', blurb: 'Cold drinks, high turnover, simple to stock and run.' }
 ];
 
 const MACHINES = [
   {
     id: 'ramen',
-    page: 'machines/ramen-vending-machine/#touchscreen',   // product page (relative to the site root)
+    page: 'machines/ramen-vending-machine/',   // product page (relative to the site root)
     category: 'ramen',
-    name: 'Ramen Machine: Touchscreen',
+    name: 'Ramen Vending Machine',
     tag: 'Specialty',
     price: 'From $5,997',
     interface: 'Touchscreen',
@@ -37,27 +36,6 @@ const MACHINES = [
     art: 'ramen',
     photo: 'images/machines/ramen-touchscreen-black',   // product photo (relative to site root); shown instead of the illustration on cards
     photoAlt: 'Black VNDR touchscreen ramen vending machine stocked with cup noodles'
-  },
-  {
-    id: 'ramen-keypad',
-    page: 'machines/ramen-vending-machine/#keypad',   // product page (relative to the site root)
-    category: 'ramen',
-    name: 'Ramen Machine: Keypad',
-    tag: 'Specialty',
-    price: 'Price on enquiry',
-    interface: 'Keypad',
-    temp: 'Hot water',
-    short: 'The same hot-ramen concept with simple keypad selection.',
-    desc: 'The ramen concept with a straightforward keypad instead of a touchscreen. Customers punch in their selection, collect their cup and add hot water from the built-in station. It\'s simple for customers and simple for you.',
-    features: ['Keypad selection', 'Hot-water system', 'Product storage', 'Cutlery compartment', 'Independent water storage'],
-    specs: {
-      'Dimensions': 'On enquiry',
-      'Capacity': 'On enquiry',
-      'Suitable products': 'Cup and bowl instant noodles, cutlery, condiments',
-      'Ideal locations': 'Student accommodation, warehouses, gyms, offices, transport hubs',
-      'Shipping': 'On enquiry'
-    },
-    art: 'ramen-keypad'
   },
   {
     id: 'snack-chilled',
@@ -127,27 +105,6 @@ const MACHINES = [
     art: 'drinks',
     photo: 'images/machines/studio-front-2',
     photoAlt: 'Black VNDR vending machine with chilled drinks, front view'
-  },
-  {
-    id: 'coffee',
-    page: 'machines/coffee-vending-machine/',   // product page (relative to the site root)
-    category: 'coffee',
-    name: 'Coffee Vending Machine',
-    tag: 'Hot drinks',
-    price: 'Price on enquiry',
-    interface: 'Touchscreen',
-    temp: 'Hot drinks',
-    short: 'Fresh hot drinks, made to order, any time of day.',
-    desc: 'A made-to-order coffee machine for the places where people need a decent coffee and the café is closed, too far away or too busy.',
-    features: ['Made-to-order hot drinks', 'Automatic cup dispensing', 'Card & contactless ready'],
-    specs: {
-      'Dimensions': 'On enquiry',
-      'Capacity': 'On enquiry',
-      'Suitable products': 'Coffee, hot chocolate, tea',
-      'Ideal locations': 'Offices, hospitals, car dealerships, universities, transport hubs',
-      'Shipping': 'On enquiry'
-    },
-    art: 'coffee'
   }
 ];
 

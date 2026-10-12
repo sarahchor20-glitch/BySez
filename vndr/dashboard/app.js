@@ -435,7 +435,7 @@
   function showApp() { $('#login').hidden = true; $('#app').hidden = false; const u = D.currentUser(); $('#userName').textContent = u.name; $('#userEmail').textContent = u.email; $('#avatar').textContent = u.name.split(' ').map(x => x[0]).join(''); route(); }
   function showLogin() {
     $('#app').hidden = true; $('#login').hidden = false;
-    $('#loginMachines').innerHTML = ['snack', 'ramen', 'coffee'].map((k, i) => machineSVG(k, 'login' + i)).join('');
+    $('#loginMachines').innerHTML = ['snack', 'ramen', 'drinks'].map((k, i) => machineSVG(k, 'login' + i)).join('');
   }
   $('#loginForm').addEventListener('submit', e => { e.preventDefault(); D.signIn($('#lEmail').value); location.hash = '#/overview'; showApp(); });
   $('#demoBtn').onclick = () => { D.signIn(); location.hash = '#/overview'; showApp(); };

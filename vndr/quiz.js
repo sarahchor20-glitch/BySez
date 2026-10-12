@@ -9,20 +9,19 @@ const MACHINE_QUIZ = [
   {
     q: 'Where are you thinking of placing your machine?',
     opts: [
-      { t: 'Office or workplace', s: { coffee: 3, 'snack-chilled': 3, snack: 2 } },
+      { t: 'Office or workplace', s: { 'snack-chilled': 3, snack: 2, drinks: 1 } },
       { t: 'Gym or sports centre', s: { drinks: 4, 'snack-chilled': 2 } },
-      { t: 'University or student accommodation', s: { ramen: 4, 'ramen-keypad': 3, snack: 2, drinks: 1 } },
-      { t: 'Hospital or healthcare', s: { coffee: 3, 'snack-chilled': 3, ramen: 2 } },
-      { t: 'Warehouse, factory or distribution centre', s: { 'ramen-keypad': 4, ramen: 2, snack: 3, drinks: 2 } },
+      { t: 'University or student accommodation', s: { ramen: 4, snack: 2, drinks: 1 } },
+      { t: 'Hospital or healthcare', s: { 'snack-chilled': 3, ramen: 2 } },
+      { t: 'Warehouse, factory or distribution centre', s: { ramen: 3, snack: 3, drinks: 2 } },
       { t: 'Not sure yet', sub: 'That\'s fine, we\'ll go on your other answers', s: { snack: 2, ramen: 1 } }
     ]
   },
   {
     q: 'When will your location be busiest?',
     opts: [
-      { t: 'Business hours, weekdays', s: { coffee: 3, 'snack-chilled': 2, snack: 2 } },
-      { t: 'Early mornings', s: { coffee: 4 } },
-      { t: 'Late nights or 24/7', s: { ramen: 3, 'ramen-keypad': 3, snack: 1 } },
+      { t: 'Business hours, weekdays', s: { 'snack-chilled': 3, snack: 2 } },
+      { t: 'Late nights or 24/7', s: { ramen: 4, snack: 1 } },
       { t: 'Evenings and weekends', s: { drinks: 3, snack: 2, ramen: 1 } }
     ]
   },
@@ -31,8 +30,7 @@ const MACHINE_QUIZ = [
     opts: [
       { t: '"Exactly what I needed."', s: { snack: 3, drinks: 3 } },
       { t: '"Wait… this is so cool."', s: { ramen: 5 } },
-      { t: '"Finally, decent coffee."', s: { coffee: 5 } },
-      { t: '"A proper meal option, at last."', s: { 'snack-chilled': 3, 'ramen-keypad': 3, ramen: 2 } }
+      { t: '"A proper meal option, at last."', s: { 'snack-chilled': 3, ramen: 3 } }
     ]
   },
   {
@@ -40,22 +38,22 @@ const MACHINE_QUIZ = [
     opts: [
       { t: 'As little as possible', sub: 'Long-life stock, simple routine', s: { snack: 4, drinks: 2 } },
       { t: 'Happy to restock fresh food regularly', s: { 'snack-chilled': 4 } },
-      { t: 'Fine with refills and cleaning', sub: 'Water, ingredients, dispensing area', s: { ramen: 2, 'ramen-keypad': 2, coffee: 3 } }
+      { t: 'Fine with refills and cleaning', sub: 'Water, ingredients, dispensing area', s: { ramen: 3 } }
     ]
   },
   {
     q: 'What matters more to you right now?',
     opts: [
-      { t: 'Start lean and prove the idea', s: { snack: 3, 'ramen-keypad': 2, drinks: 1 } },
-      { t: 'Stand out from every other machine', s: { ramen: 4, coffee: 1 } },
-      { t: 'Highest everyday demand', s: { drinks: 3, coffee: 2, snack: 1 } }
+      { t: 'Start lean and prove the idea', s: { snack: 3, drinks: 1 } },
+      { t: 'Stand out from every other machine', s: { ramen: 4 } },
+      { t: 'Highest everyday demand', s: { drinks: 3, snack: 1 } }
     ]
   },
   {
     q: 'Touchscreen or keypad?',
     opts: [
-      { t: 'Touchscreen. Modern and interactive.', s: { ramen: 2, coffee: 2 } },
-      { t: 'Keypad. Simple and familiar.', s: { 'ramen-keypad': 2, snack: 1, drinks: 1, 'snack-chilled': 1 } },
+      { t: 'Touchscreen. Modern and interactive.', s: { ramen: 2 } },
+      { t: 'Keypad. Simple and familiar.', s: { snack: 1, drinks: 1, 'snack-chilled': 1 } },
       { t: 'No preference', s: {} }
     ]
   }
@@ -63,11 +61,9 @@ const MACHINE_QUIZ = [
 
 const MACHINE_REASONS = {
   ramen: ['A hot meal that stands out from every snack machine', 'Built for late nights, students and shift workers', 'Touchscreen ordering and online monitoring'],
-  'ramen-keypad': ['A hot meal option for hungry, busy locations', 'Simple keypad ordering anyone can use', 'Shelf-stable noodles mean less waste'],
   'snack-chilled': ['Fresh food and cold drinks from one machine', 'A real lunch option for workplaces and hospitals', 'Higher-value items than a standard snack machine'],
   snack: ['The simplest machine to start and run', 'Long-life stock with very little waste', 'Easy to pitch to almost any location'],
-  drinks: ['Consistent, everyday demand', 'Simple, focused range to manage', 'Perfect for active, thirsty locations'],
-  coffee: ['A daily habit, so lots of repeat customers', 'Strong all-day demand in workplaces', 'Fills the gap when the café is closed']
+  drinks: ['Consistent, everyday demand', 'Simple, focused range to manage', 'Perfect for active, thirsty locations']
 };
 
 /* ---------- Quiz 2: Is a vending business right for you? ----------

@@ -104,7 +104,7 @@ function article(p) {
     <div class="sec-head"><div class="eyebrow reveal">Keep reading</div><h2 class="reveal">Related guides.</h2></div>
     <div class="rel reveal">
       ${p.related.map(post).filter(Boolean).map(r => `<a href="${root}blog/${r.slug}/"><small>${esc(r.category)}</small><b>${esc(r.title)}</b><span>${readMins(r.body)} min read</span></a>`).join('')}
-      <a href="${root}machines/"><small>Machines</small><b>Browse all machines</b><span>Ramen, snack, drinks and coffee.</span></a>
+      <a href="${root}machines/"><small>Machines</small><b>Browse all machines</b><span>Ramen, snack and drinks.</span></a>
     </div>
   </div>
 </section>
@@ -122,13 +122,13 @@ const QUIZZES = [
     slug: 'which-vending-machine',
     name: 'Which vending machine is right for you?',
     metaTitle: 'Which Vending Machine Is Right for You? Free Quiz | VNDR',
-    description: 'Take the free 60-second quiz to find the right vending machine for your location and goals: ramen, snack, drinks or coffee.',
+    description: 'Take the free 60-second quiz to find the right vending machine for your location and goals: ramen, snack or drinks.',
     lede: 'Six quick questions about your location, your customers and how hands-on you want to be. We\'ll match you with a machine.',
     meta: '6 questions · 60 seconds',
     script: root => `<script>runQuiz(document.getElementById('quiz'), { questions: MACHINE_QUIZ, render: renderMachineResult, root: '${root}' });</script>`,
     after: `
       <h2>How the quiz works</h2>
-      <p>Every machine suits different locations and different operators. A <a href="{{root}}machines/drink-vending-machine/">drinks machine</a> thrives in a gym. A <a href="{{root}}machines/ramen-vending-machine/">ramen machine</a> shines in student housing at midnight. A <a href="{{root}}machines/coffee-vending-machine/">coffee machine</a> wins the office morning rush. The quiz weighs your answers about location, timing, customers, effort and budget to point you at the best starting machine.</p>
+      <p>Every machine suits different locations and different operators. A <a href="{{root}}machines/drink-vending-machine/">drinks machine</a> thrives in a gym. A <a href="{{root}}machines/ramen-vending-machine/">ramen machine</a> shines in student housing at midnight. The quiz weighs your answers about location, timing, customers, effort and budget to point you at the best starting machine.</p>
       <p>It's a starting point, not a final answer. Your exact location matters most. Read <a href="{{root}}blog/how-to-find-vending-machine-locations/">how to find great vending locations</a>, or <a href="{{root}}index.html#enquire">ask us</a> about your site.</p>`
   },
   {

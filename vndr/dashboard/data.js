@@ -45,11 +45,11 @@ const VNDRData = (() => {
   // Demo fleet. Locations are fictional placeholders (Sydney area).
   const FLEET = [
     { id: 'R01', model: 'ramen', nickname: 'Campus Library', site: 'Northside University', spot: 'Library foyer, ground floor', type: 'university', lat: -33.8885, lng: 151.1873, perDay: 26, commission: 10, installed: '2026-03-14', hours: '7am – 11pm', contact: 'Campus facilities', water: 18 },
-    { id: 'R02', model: 'ramen-keypad', nickname: 'Northgate DC', site: 'Northgate Distribution Centre', spot: 'Staff break room', type: 'warehouse', lat: -33.8150, lng: 151.0010, perDay: 21, commission: 8, installed: '2026-05-02', hours: '24/7', contact: 'Site manager', water: 64, offlineHours: 3 },
+    { id: 'R02', model: 'ramen', nickname: 'Northgate DC', site: 'Northgate Distribution Centre', spot: 'Staff break room', type: 'warehouse', lat: -33.8150, lng: 151.0010, perDay: 21, commission: 8, installed: '2026-05-02', hours: '24/7', contact: 'Site manager', water: 64, offlineHours: 3 },
     { id: 'S01', model: 'snack-chilled', nickname: 'Harbour Medical', site: 'Harbour Medical Centre', spot: 'Level 2 waiting area', type: 'hospital', lat: -33.8790, lng: 151.2160, perDay: 19, commission: 12, installed: '2026-02-20', hours: '24/7', contact: 'Hospital services' },
     { id: 'S02', model: 'snack', nickname: 'Westside Lobby', site: 'Westside Apartments', spot: 'Residents\' lobby', type: 'apartments', lat: -33.8170, lng: 151.1030, perDay: 14, commission: 0, installed: '2026-06-11', hours: '24/7 (residents)', contact: 'Building manager' },
     { id: 'D01', model: 'drinks', nickname: 'Peak Fitness', site: 'Peak Fitness', spot: 'Next to reception', type: 'gym', lat: -33.9150, lng: 151.2390, perDay: 30, commission: 10, installed: '2026-04-08', hours: '5am – 10pm', contact: 'Gym owner' },
-    { id: 'C01', model: 'coffee', nickname: 'Parkline Offices', site: 'Parkline Offices', spot: 'Ground floor kitchen', type: 'office', lat: -33.8660, lng: 151.2060, perDay: 34, commission: 10, installed: '2026-07-01', hours: 'Mon – Fri, 7am – 7pm', contact: 'Office manager' }
+    { id: 'C01', model: 'snack-chilled', nickname: 'Parkline Offices', site: 'Parkline Offices', spot: 'Ground floor kitchen', type: 'office', lat: -33.8660, lng: 151.2060, perDay: 34, commission: 10, installed: '2026-07-01', hours: 'Mon – Fri, 7am – 7pm', contact: 'Office manager' }
   ];
 
   const now = new Date();

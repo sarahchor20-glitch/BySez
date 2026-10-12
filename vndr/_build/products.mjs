@@ -52,23 +52,22 @@ const productLd = (m, slug, desc) => ({
    ===================================================================== */
 const RAMEN_GALLERY = ['ramenBlack', 'front', 'shelves', 'collect', 'water'];
 function ramenPage() {
-  const T = machine('ramen'), K = machine('ramen-keypad');
+  const T = machine('ramen');
   const slug = 'ramen-vending-machine';
   const faqs = [
-    { q: 'How much does a ramen vending machine cost?', a: [`The touchscreen ramen vending machine starts from <strong>$5,997</strong>. Pricing for the keypad model is available on enquiry. The final price can depend on options like a custom wrap and delivery to your area. <a href="../../index.html?machine=ramen#enquire">Ask for a quote</a> and we'll give you the full number up front.`] },
-    { q: "What's the difference between the touchscreen and keypad models?", a: ['Both serve instant noodles with hot water from the machine. The <strong>touchscreen model</strong> gives customers an interactive ordering screen and includes online machine monitoring, so it\'s the more eye-catching option. The <strong>keypad model</strong> uses simple keypad selection. Choose the touchscreen if you want the "wow" factor in a high-visibility spot, or the keypad for a straightforward, practical setup.'] },
-    { q: 'Do I need to connect the machine to a water supply?', a: ['The machine has its own independent water storage, so it\'s refilled rather than plumbed in. That gives you much more freedom over where it can go. Ask us about tank capacity and the refill routine for the model you\'re considering.'] },
+    { q: 'How much does a ramen vending machine cost?', a: [`The ramen vending machine starts from <strong>$5,997</strong>. The final price can depend on options like a custom wrap and delivery to your area. <a href="../../index.html?machine=ramen#enquire">Ask for a quote</a> and we'll give you the full number up front.`] },
+    { q: 'Do I need to connect the machine to a water supply?', a: ['The machine has its own independent water storage, so it\'s refilled rather than plumbed in. That gives you much more freedom over where it can go. Ask us about tank capacity and the refill routine.'] },
     { q: 'What products can I sell in a ramen vending machine?', a: ['Cup and bowl instant noodles are the core range. Think a mix of mild crowd-pleasers, spicy options, and vegetarian or vegan choices. The cutlery compartment means customers get a fork or chopsticks with their meal. Many operators also rotate a "featured" or premium noodle to keep regulars interested.'] },
     { q: 'Where do ramen vending machines work best?', a: ['Anywhere people are hungry, short on time and short on options: universities and student accommodation, hospitals, transport hubs, warehouses and distribution centres with shift workers, gyms, and late-night entertainment venues. See the <a href="#locations">locations section</a> above for what makes each one work.'] },
     { q: 'Can I put my own branding on the machine?', a: ['Yes. The ramen machine can be finished with a custom branded wrap, whether that\'s your vending business\'s brand, the venue\'s branding, or a design built around the product. A strong wrap is one of the easiest ways to make the machine stand out.'] },
-    { q: 'Can I check sales and stock remotely?', a: ['The touchscreen model includes online machine monitoring, so you can keep an eye on the machine without being there. For the keypad model, ask us which monitoring options are available.'] },
+    { q: 'Can I check sales and stock remotely?', a: ['Yes. The machine includes online machine monitoring, so you can keep an eye on it without being there.'] },
     { q: 'Is a ramen vending machine profitable?', a: ['It can be, but no machine is profitable in the wrong location. Your results come down to foot traffic, how many sales you make per day, your selling price, product cost and any commission you pay the site. Use the <a href="#calculator">calculator on this page</a> to test scenarios, then talk to us about your location.'] },
     { q: 'Do you help with finding a location?', a: ['Yes. VNDR is built around the whole journey: machine, location, stock, launch, scale. We\'ll help you work out what makes a location worth pursuing and how to approach the business that owns it. Read our <a href="../../blog/how-to-find-vending-machine-locations/">guide to finding vending locations</a> to get started.'] },
     { q: 'How is the machine delivered?', a: ['Delivery details and timing depend on your location. <a href="../../index.html?machine=ramen#enquire">Send us an enquiry</a> and we\'ll confirm shipping for your area.'] }
   ];
-  const crumb = crumbs('../../', [['Home', 'index.html'], ['Machines', 'machines/'], ['Ramen vending machines']]);
+  const crumb = crumbs('../../', [['Home', 'index.html'], ['Machines', 'machines/'], ['Ramen vending machine']]);
   const faq = faqBlock(faqs);
-  const desc = 'Ramen vending machines with hot water on demand. Choose a touchscreen or keypad model, from $5,997. Features, specs, best locations, what to stock, and FAQs.';
+  const desc = 'Ramen vending machines with hot water on demand. Touchscreen ordering, from $5,997. Features, specs, best locations, what to stock, and FAQs.';
 
   const specKeys = ['Interface', 'Temperature', 'Dimensions', 'Capacity', 'Suitable products', 'Ideal locations', 'Shipping'];
   const sv = (m, k) => k === 'Interface' ? m.interface : k === 'Temperature' ? m.temp : m.specs[k];
@@ -76,9 +75,9 @@ function ramenPage() {
   writePage({
     pagePath: `machines/${slug}/`,
     active: 'machines',
-    title: 'Ramen Vending Machines: Touchscreen & Keypad Models | VNDR',
+    title: 'Ramen Vending Machine with Touchscreen & Hot Water | VNDR',
     description: desc,
-    jsonld: [crumb.ld, faq.ld, productLd(T, slug, T.desc), productLd(K, slug, K.desc)],
+    jsonld: [crumb.ld, faq.ld, productLd(T, slug, T.desc)],
     body: root => `
 <!-- ===== HERO ===== -->
 <section class="pd-hero">
@@ -89,19 +88,19 @@ function ramenPage() {
         ${gallery(root, RAMEN_GALLERY)}
       </div>
       <div class="pd-info">
-        <div class="eyebrow reveal">Specialty vending · 2 models</div>
-        <h1 class="reveal">Ramen vending machines.</h1>
-        <p class="lede reveal">Hot noodles, served in seconds, at any hour. A specialty vending machine with an integrated hot-water system, available with a touchscreen or a keypad.</p>
+        <div class="eyebrow reveal">Specialty vending</div>
+        <h1 class="reveal">Ramen vending machine.</h1>
+        <p class="lede reveal">Hot noodles, served in seconds, at any hour. A specialty vending machine with an interactive touchscreen and an integrated hot-water system.</p>
         <div class="pd-price reveal"><small>From</small><b>$5,997</b></div>
         <dl class="pd-quick reveal">
-          <div><dt>Models</dt><dd><a href="#touchscreen">Touchscreen</a> · <a href="#keypad">Keypad</a></dd></div>
+          <div><dt>Ordering</dt><dd>Interactive touchscreen</dd></div>
           <div><dt>Serves</dt><dd>Cup &amp; bowl instant noodles</dd></div>
           <div><dt>Hot water</dt><dd>Integrated, independent storage</dd></div>
           <div><dt>Branding</dt><dd>Custom wrap available</dd></div>
         </dl>
         <div class="pd-ctas reveal">
           <a href="${root}index.html?machine=ramen#enquire" class="btn btn-primary">Get pricing <span class="arrow">→</span></a>
-          <a href="#models" class="btn btn-ghost">Compare models</a>
+          <a href="#specs" class="btn btn-ghost">Full specs</a>
         </div>
       </div>
     </div>
@@ -112,25 +111,10 @@ function ramenPage() {
 <section class="sec" style="padding-top:0">
   <div class="wrap">
     <div class="stats reveal">
-      <div><b>2</b><span>models: touchscreen &amp; keypad</span></div>
+      <div><b>Tap</b><span>to order on the touchscreen</span></div>
       <div><b>Hot</b><span>water station built into the machine</span></div>
       <div><b>24/7</b><span>sales potential, no staff needed</span></div>
       <div><b>1</b><span>machine to start your business</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== VIDEO ===== -->
-<section class="sec">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow reveal">See it in action</div>
-      <h2 class="reveal">From tap to hot noodles.</h2>
-    </div>
-    <div class="vid-grid reveal">
-      ${slot({ type: 'video', ratio: '16x9', hint: 'Walkthrough: ordering, hot water, pick-up (landscape)', file: root + 'videos/ramen/walkthrough.mp4' })}
-      ${slot({ type: 'video', ratio: '9x16', hint: 'Reel: customer reaction (vertical)', file: root + 'videos/ramen/reel-1.mp4' })}
-      ${slot({ type: 'video', ratio: '9x16', hint: 'Reel: restock & refill routine (vertical)', file: root + 'videos/ramen/reel-2.mp4' })}
     </div>
   </div>
 </section>
@@ -160,7 +144,7 @@ function ramenPage() {
     </div>
     <div class="csteps">
       ${[
-        ['Choose', 'They browse flavours and pick their noodles on the touchscreen (or keypad).', { p: PHOTOS.front, pos: '72% 27%', zoom: 2.1 }],
+        ['Choose', 'They browse flavours and pick their noodles on the touchscreen.', { p: PHOTOS.front, pos: '72% 27%', zoom: 2.1 }],
         ['Pay', 'A quick tap of their card at the machine. No cashier, no queue.', { p: PHOTOS.front, pos: '88% 53%', zoom: 3 }],
         ['Collect', 'Their cup drops into the pick-up door, ready to go.', { p: PHOTOS.collect, pos: '50% 58%' }],
         ['Add hot water & enjoy', 'They fill the cup at the built-in hot-water station, grab cutlery and eat.', { p: PHOTOS.water, pos: '50% 62%' }]
@@ -169,34 +153,6 @@ function ramenPage() {
         ${photo(root, { ...ph, ratio: '4x3', sizes: '(max-width: 520px) 100vw, 25vw' })}
         <span class="n">0${i + 1}</span><h3>${h}</h3><p>${p}</p>
       </div>`).join('')}
-    </div>
-  </div>
-</section>
-
-<!-- ===== MODELS ===== -->
-<section class="sec" id="models">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow reveal">Choose your model</div>
-      <h2 class="reveal">Touchscreen or keypad?</h2>
-      <p class="lede reveal">Same hot-ramen concept, two ways to order. Pick the one that suits your location and budget.</p>
-    </div>
-    <div class="models">
-      ${[[T, 'touchscreen', 'High-visibility locations where the experience sells the product: universities, transport hubs, entertainment venues.'],
-         [K, 'keypad', 'Practical, high-use locations where people just want food fast: warehouses, accommodation, staff rooms.']].map(([m, anchor, best]) => `
-      <article class="model reveal" id="${anchor}">
-        ${art(m.art, 'model-' + anchor)}
-        <div class="eyebrow">${esc(m.interface)} model</div>
-        <h3>${esc(m.name)}</h3>
-        <div class="pd-price">${m.price.startsWith('From') ? `<small>From</small><b>${esc(m.price.replace('From ', ''))}</b>` : `<b class="tbc">${esc(m.price)}</b>`}</div>
-        <p class="muted">${esc(m.desc)}</p>
-        <ul class="feat-list">${m.features.map(f => `<li>${icon('<path d="M5 12l5 5 9-10"/>')}${esc(f)}</li>`).join('')}</ul>
-        <p class="best"><strong>Best for:</strong> ${best}</p>
-        <div class="ctas">
-          <a href="${root}index.html?machine=${m.id}#enquire" class="btn btn-primary">${m.price.startsWith('From') ? 'Enquire now' : 'Get pricing'} <span class="arrow">→</span></a>
-          <a href="#specs" class="btn btn-ghost">Full specs</a>
-        </div>
-      </article>`).join('')}
     </div>
   </div>
 </section>
@@ -210,11 +166,10 @@ function ramenPage() {
     </div>
     <div class="fgrid reveal">
       ${[
-        [I.screen, 'Interactive touchscreen', 'A large, bright ordering screen that makes buying feel modern and draws people over. <em>Touchscreen model.</em>'],
-        [I.keypad, 'Simple keypad selection', 'Familiar, no-fuss selection that anyone can use in seconds. <em>Keypad model.</em>'],
+        [I.screen, 'Interactive touchscreen', 'A large, bright ordering screen that makes buying feel modern and draws people over.'],
         [I.drop, 'Hot-water system', 'The machine provides the hot water, so customers walk away with a ready-to-eat meal.'],
         [I.tank, 'Independent water storage', 'Its own internal water supply, so it\'s refilled rather than plumbed in. That means more freedom over placement.'],
-        [I.wifi, 'Online machine monitoring', 'Keep an eye on the machine remotely and plan your restocks. <em>Touchscreen model.</em>'],
+        [I.wifi, 'Online machine monitoring', 'Keep an eye on the machine remotely and plan your restocks.'],
         [I.brush, 'Custom branding / wrap', 'Wrap the machine in your brand, the venue\'s, or a design that makes it impossible to miss.'],
         [I.box, 'Product storage', 'Dedicated internal storage for your noodle range.'],
         [I.fork, 'Cutlery compartment', 'Forks or chopsticks right where customers need them.'],
@@ -324,16 +279,15 @@ function ramenPage() {
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow reveal">Specifications</div>
-      <h2 class="reveal">Specs, side by side.</h2>
+      <h2 class="reveal">Specs.</h2>
     </div>
     <div class="table-wrap reveal">
       <table class="spec-table">
-        <thead><tr><th></th><th>${esc(T.name)}</th><th>${esc(K.name)}</th></tr></thead>
         <tbody>
-          ${specRow('Price', [T.price, K.price])}
-          ${specKeys.map(k => specRow(k, [sv(T, k), sv(K, k)])).join('')}
-          ${specRow('Online monitoring', ['Yes', 'On enquiry'])}
-          ${specRow('Custom wrap', ['Yes', 'On enquiry'])}
+          ${specRow('Price', [T.price])}
+          ${specKeys.map(k => specRow(k, [sv(T, k)])).join('')}
+          ${specRow('Online monitoring', ['Yes'])}
+          ${specRow('Custom wrap', ['Yes'])}
         </tbody>
       </table>
     </div>
@@ -343,7 +297,7 @@ function ramenPage() {
 <!-- ===== CARE ===== -->
 <section class="sec light">
   <div class="wrap">
-    <div class="split">
+    <div style="max-width:720px">
       <div>
         <div class="eyebrow reveal">Running it</div>
         <h2 class="reveal">What looking after it involves.</h2>
@@ -352,11 +306,10 @@ function ramenPage() {
           ${['<strong>Restocking</strong> noodles and cutlery based on what\'s selling',
              '<strong>Refilling the water</strong> in the independent water storage',
              '<strong>Keeping it clean:</strong> the dispensing area and exterior especially',
-             '<strong>Checking in remotely</strong> (touchscreen model) so trips are planned, not guessed'].map(x => `<li>${icon('<path d="M5 12l5 5 9-10"/>')}<span>${x}</span></li>`).join('')}
+             '<strong>Checking in remotely</strong> so trips are planned, not guessed'].map(x => `<li>${icon('<path d="M5 12l5 5 9-10"/>')}<span>${x}</span></li>`).join('')}
         </ul>
-        <p class="reveal">We'll walk you through the exact routine for your model before your machine goes live.</p>
+        <p class="reveal">We'll walk you through the exact routine before your machine goes live.</p>
       </div>
-      <div class="reveal">${slot({ ratio: '4x3', hint: 'Operator restocking / refilling the machine', file: root + 'images/ramen/restock.jpg' })}</div>
     </div>
   </div>
 </section>
@@ -370,8 +323,6 @@ function ramenPage() {
     </div>
     <div class="bcards reveal" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
       ${['front', 'shelves', 'collect', 'water'].map(k => photo(root, { p: PHOTOS[k], ratio: '4x5', sizes: '(max-width: 560px) 100vw, 25vw' })).join('')}
-      ${['University common room', 'Night-time glow in a hallway'].map((h, i) =>
-        slot({ ratio: '4x5', hint: h, file: `${root}images/ramen/gallery-${i + 5}.jpg` })).join('')}
     </div>
   </div>
 </section>
@@ -395,7 +346,7 @@ function ramenPage() {
       <a href="${root}blog/ramen-vending-machines-guide/"><small>Guide</small><b>Ramen vending machines: the complete guide</b><span>How they work, where they sell, and what to know first.</span></a>
       <a href="${root}quiz/which-vending-machine/"><small>Quiz</small><b>Which vending machine is right for you?</b><span>Six questions, one recommendation.</span></a>
       <a href="${root}blog/how-much-does-it-cost-to-start-a-vending-business/"><small>Guide</small><b>What it costs to start a vending business</b><span>Every cost to plan for, beyond the machine.</span></a>
-      <a href="${root}machines/"><small>Machines</small><b>See all machines</b><span>Snack, drinks and coffee machines too.</span></a>
+      <a href="${root}machines/"><small>Machines</small><b>See all machines</b><span>Snack and drinks machines too.</span></a>
     </div>
   </div>
 </section>
@@ -497,30 +448,6 @@ const STANDARD = [
       { q: 'How much does it cost?', a: ['Pricing is available on enquiry. <a href="../../index.html?machine=drinks#enquire">Ask us for a quote</a>.'] },
       { q: 'Should I get a drinks machine or a refrigerated snack machine?', a: ['If drinks are the main demand (gyms, sports venues), a dedicated drinks machine gives you more drink capacity. If you want food and drinks from one machine, look at the <a href="../refrigerated-snack-vending-machine/">refrigerated snack machine</a>. Not sure? Try the <a href="../../quiz/which-vending-machine/">machine quiz</a>.'] }
     ]
-  },
-  {
-    id: 'coffee', slug: 'coffee-vending-machine',
-    title: 'Coffee Vending Machine | VNDR',
-    h1: 'Coffee vending machine.',
-    lede: 'Fresh hot drinks, made to order, any time of day. For places where people need a decent coffee and the café is closed or too far away.',
-    icon: I.cup,
-    overview: [
-      'A coffee vending machine makes hot drinks to order: coffee, hot chocolate and tea. Customers pick their drink on the screen, pay, and the machine dispenses a cup and makes it.',
-      'Coffee is a daily habit for a lot of people, which makes it a repeat purchase. It works best in places with a steady flow of people who need a pick-me-up and don\'t have a good option nearby.'
-    ],
-    why: [
-      ['Daily habit', 'Many customers buy coffee every single day.'],
-      ['All-day demand', 'Morning rush, afternoon slump, night shift.'],
-      ['Made to order', 'Fresh drinks, not pre-made.'],
-      ['Fills a gap', 'Perfect where there\'s no café or it closes early.']
-    ],
-    stock: ['Coffee beans or coffee product', 'Milk product', 'Hot chocolate', 'Tea', 'Cups, lids and stirrers'],
-    locations: [['Offices', 'The 3pm coffee run, solved.'], ['Hospitals', 'Round-the-clock caffeine for staff.'], ['Car dealerships & service centres', 'Customers waiting for their car.'], ['Universities', 'Before-class coffee.']],
-    faqs: [
-      { q: 'What drinks can a coffee vending machine make?', a: ['Coffee options alongside hot chocolate and tea. Ask us for the full drinks menu for this machine.'] },
-      { q: 'How much does it cost?', a: ['Pricing is available on enquiry. <a href="../../index.html?machine=coffee#enquire">Ask us for a quote</a>.'] },
-      { q: 'How much maintenance does a coffee machine need?', a: ['More than a snack machine. Expect regular restocking of ingredients and cups, plus cleaning. We\'ll walk you through the routine for this machine.'] }
-    ]
   }
 ];
 
@@ -578,7 +505,7 @@ function standardPage(p) {
         <h2 class="reveal">${esc(m.short)}</h2>
         ${p.overview.map(x => `<p class="reveal">${x}</p>`).join('')}
       </div>
-      <div class="reveal">${slot({ type: 'video', ratio: '4x5', hint: 'Short video of the machine in use', file: `${root}videos/${p.slug}/overview.mp4` })}</div>
+      <div class="reveal">${photo(root, { p: PHOTOS[p.photos[1]], ratio: '4x5' })}</div>
     </div>
   </div>
 </section>
@@ -661,8 +588,8 @@ function cataloguePage() {
   writePage({
     pagePath: 'machines/',
     active: 'machines',
-    title: 'Vending Machines for Sale: Ramen, Snack, Drink & Coffee | VNDR',
-    description: 'Commercial vending machines for your vending business: ramen (touchscreen and keypad), refrigerated and non-refrigerated snack, drink and coffee machines.',
+    title: 'Vending Machines for Sale: Ramen, Snack & Drink | VNDR',
+    description: 'Commercial vending machines for your vending business: a touchscreen ramen machine with hot water, refrigerated and non-refrigerated snack machines, and drink machines.',
     jsonld: [crumb.ld],
     body: root => `
 <section class="p-hero">
@@ -670,7 +597,7 @@ function cataloguePage() {
     ${crumb.html}
     <div class="eyebrow reveal">The machines</div>
     <h1 class="reveal">Pick your machine. <span class="muted">Build from there.</span></h1>
-    <p class="lede reveal">Ramen, snack, drinks and coffee. Every machine is chosen to be simple to run and easy to place, and to be the start of something bigger.</p>
+    <p class="lede reveal">Ramen, snack and drinks. Every machine is chosen to be simple to run and easy to place, and to be the start of something bigger.</p>
     <p class="reveal" style="margin-top:28px"><a href="${root}quiz/which-vending-machine/" class="btn btn-ghost">Not sure? Take the 60-second quiz →</a></p>
   </div>
 </section>
@@ -716,7 +643,7 @@ function cataloguePage() {
   <div class="wrap">
     <div class="head">
       <div><div class="eyebrow reveal">Compare</div><h2 class="reveal">Every machine, side by side.</h2></div>
-      <p class="lede reveal">Touchscreen or keypad. Chilled or ambient. Hot or cold. Here's the quick version.</p>
+      <p class="lede reveal">Hot or cold. Chilled or ambient. Here's the quick version.</p>
     </div>
     <div class="table-wrap reveal">
       <table class="cmp">
