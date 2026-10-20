@@ -1,17 +1,43 @@
 /* =====================================================================
    VNDR — shared machine catalogue + site helpers
    Loaded by every page. The page generator (_build/build.mjs) also reads
-   MACHINES and machineSVG from this file to write the product pages.
+   MACHINES, INCLUDED and machineSVG from this file to write the pages.
 
    EDIT MACHINES HERE. Every page updates automatically.
-   "On enquiry" = placeholder. Replace with real specs when you have them.
+   Prices are deliberately not shown anywhere: every machine links to the
+   contact page ("Contact us for pricing").
    ===================================================================== */
+
+const ENQUIRY_EMAIL = 'hello@vndr.com';   // ← replace with your real enquiry inbox
 
 const CATEGORIES = [
   { id: 'ramen',  name: 'Ramen',  blurb: 'Hot noodles on demand. The specialty machine people stop for.' },
   { id: 'snack',  name: 'Snack',  blurb: 'The backbone of vending: chilled or ambient, built to sell every day.' },
   { id: 'drinks', name: 'Drinks', blurb: 'Cold drinks, high turnover, simple to stock and run.' }
 ];
+
+// Comes with every machine. Shown on the home page, product pages and the builder.
+const INCLUDED = [
+  ['Custom wrap', 'Your branding, or a VNDR design. Included.'],
+  ['Nayax card reader', 'Card, tap and phone payments on every machine.'],
+  ['Optional cash slot', 'Add a cash slot at no extra cost.'],
+  ['Online monitoring', 'Check sales and stock from anywhere. Included.'],
+  ['Worldwide shipping', 'Included to your nearest port, or delivered straight to your door.'],
+  ['Set up for your country', 'Configured for your local power supply.'],
+  ['Setup help and booklet', 'We help you get going, plus a step-by-step operating booklet.'],
+  ['Warranty and support', 'Warranty cover and ongoing maintenance support.']
+];
+
+// Specs every machine shares
+const COMMON_SPECS = {
+  'Payments': 'Nayax card reader included, plus an optional cash slot at no extra cost',
+  'Power': 'Set up for the power supply in your country',
+  'Shipping': 'Worldwide. Included to your nearest port, or delivered to your door',
+  'Branding': 'Custom wrap included',
+  'Monitoring': 'Online machine monitoring included',
+  'Setup': 'Setup help and an operating booklet',
+  'Warranty': 'Warranty plus ongoing maintenance support'
+};
 
 const MACHINES = [
   {
@@ -20,18 +46,15 @@ const MACHINES = [
     category: 'ramen',
     name: 'Ramen Vending Machine',
     tag: 'Specialty',
-    price: 'From $5,997',
     interface: 'Touchscreen',
     temp: 'Hot water',
     short: 'Interactive touchscreen ordering with an integrated hot-water system.',
     desc: 'Our flagship specialty machine. Customers browse and order on a large interactive touchscreen, collect their cup, and fill it at the built-in hot-water station. It stands out from every snack machine in the building.',
-    features: ['Interactive touchscreen', 'Hot-water system', 'Online machine monitoring', 'Custom branding / wrap', 'Product storage', 'Cutlery compartment', 'Independent water storage'],
+    features: ['Interactive touchscreen', 'Hot-water system', 'Adjustable water temperature', 'Nayax card reader', 'Online monitoring', 'Custom wrap included', 'Cutlery compartment', 'Independent water storage'],
     specs: {
-      'Dimensions': 'On enquiry',
-      'Capacity': 'On enquiry',
+      'Water temperature': 'Temperature controlled, adjustable on the machine',
       'Suitable products': 'Cup and bowl instant noodles, cutlery, condiments',
-      'Ideal locations': 'Universities, student accommodation, hospitals, transport hubs, late-night venues',
-      'Shipping': 'On enquiry'
+      'Ideal locations': 'Universities, student accommodation, hospitals, transport hubs, late-night venues'
     },
     art: 'ramen',
     photo: 'images/machines/ramen-touchscreen-black',   // product photo (relative to site root); shown instead of the illustration on cards
@@ -39,22 +62,18 @@ const MACHINES = [
   },
   {
     id: 'snack-chilled',
-    page: 'machines/refrigerated-snack-vending-machine/',   // product page (relative to the site root)
+    page: 'machines/refrigerated-snack-vending-machine/',
     category: 'snack',
     name: 'Refrigerated Snack Machine',
     tag: 'Refrigerated',
-    price: 'Price on enquiry',
     interface: 'Keypad',
     temp: 'Refrigerated',
     short: 'Chilled snacks, fresh food and cold drinks in one machine.',
     desc: 'A refrigerated snack machine that opens up a much bigger product range: fresh food, dairy, chilled snacks and cold drinks alongside the classics.',
-    features: ['Refrigerated cabinet', 'Glass display front', 'Adjustable spirals', 'Card & contactless ready'],
+    features: ['Refrigerated cabinet', 'Glass display front', 'Adjustable spirals', 'Nayax card reader', 'Optional cash slot'],
     specs: {
-      'Dimensions': 'On enquiry',
-      'Capacity': 'On enquiry',
       'Suitable products': 'Sandwiches, salads, yoghurt, chocolate, chilled snacks, cans and bottles',
-      'Ideal locations': 'Offices, hospitals, gyms, universities, warehouses',
-      'Shipping': 'On enquiry'
+      'Ideal locations': 'Offices, hospitals, gyms, universities, warehouses'
     },
     art: 'snack-chilled',
     photo: 'images/machines/snack-drink-front',
@@ -62,22 +81,18 @@ const MACHINES = [
   },
   {
     id: 'snack',
-    page: 'machines/snack-vending-machine/',   // product page (relative to the site root)
+    page: 'machines/snack-vending-machine/',
     category: 'snack',
     name: 'Non-Refrigerated Snack Machine',
     tag: 'Best first machine',
-    price: 'Price on enquiry',
     interface: 'Keypad',
     temp: 'Ambient',
     short: 'The classic snack machine. Simple, reliable, easy to start with.',
     desc: 'The machine most vending businesses start with. Shelf-stable snacks, no refrigeration to run, and products that last, making it easy to stock and easy to place.',
-    features: ['Ambient (no refrigeration)', 'Glass display front', 'Adjustable spirals', 'Card & contactless ready'],
+    features: ['Ambient (no refrigeration)', 'Glass display front', 'Adjustable spirals', 'Nayax card reader', 'Optional cash slot'],
     specs: {
-      'Dimensions': 'On enquiry',
-      'Capacity': 'On enquiry',
       'Suitable products': 'Chips, chocolate, bars, nuts, lollies, personal-care items',
-      'Ideal locations': 'Offices, warehouses, apartment buildings, shopping centres, entertainment venues',
-      'Shipping': 'On enquiry'
+      'Ideal locations': 'Offices, warehouses, apartment buildings, shopping centres, entertainment venues'
     },
     art: 'snack',
     photo: 'images/machines/snack-drink-hallway',
@@ -85,35 +100,85 @@ const MACHINES = [
   },
   {
     id: 'drinks',
-    page: 'machines/drink-vending-machine/',   // product page (relative to the site root)
+    page: 'machines/drink-vending-machine/',
     category: 'drinks',
     name: 'Drinks Machine',
     tag: 'Refrigerated',
-    price: 'Price on enquiry',
     interface: 'Keypad',
     temp: 'Refrigerated',
     short: 'Cold drinks, high turnover, simple to run.',
     desc: 'A glass-front refrigerated machine for water, soft drinks, energy drinks and protein shakes. It\'s simple to stock and quick to sell through.',
-    features: ['Refrigerated', 'Glass display front', 'Card & contactless ready'],
+    features: ['Refrigerated', 'Glass display front', 'Nayax card reader', 'Optional cash slot'],
     specs: {
-      'Dimensions': 'On enquiry',
-      'Capacity': 'On enquiry',
       'Suitable products': 'Water, soft drinks, energy drinks, sports drinks, protein shakes',
-      'Ideal locations': 'Gyms, sports centres, warehouses, transport hubs, universities',
-      'Shipping': 'On enquiry'
+      'Ideal locations': 'Gyms, sports centres, warehouses, transport hubs, universities'
     },
     art: 'drinks',
     photo: 'images/machines/studio-front-2',
     photoAlt: 'Black VNDR vending machine with chilled drinks, front view'
   }
 ];
+MACHINES.forEach(m => { m.specs = { ...m.specs, ...COMMON_SPECS }; });
 
 
 /* ---------- Helpers ---------- */
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const priceLabel = m => m.price.startsWith('From') ? 'From' : 'Pricing';
-const priceValue = m => m.price.replace(/^From\s*/, '').replace('Price on enquiry', 'On enquiry');
+
+/* ---------- Hand-off to the contact page ---------- */
+function saveEnquiry(obj) { try { sessionStorage.setItem('vndr-enquiry', JSON.stringify(obj)); } catch {} }
+function takeEnquiry() {
+  const q = new URLSearchParams(location.search);
+  let saved = {};
+  try { saved = JSON.parse(sessionStorage.getItem('vndr-enquiry') || '{}'); sessionStorage.removeItem('vndr-enquiry'); } catch {}
+  return { machine: q.get('machine') || saved.machine, message: q.get('config') || saved.message };
+}
+
+/* ---------- Machine card (home page + machines page) ---------- */
+function machineCard(m, root = '', uid = 'card') {
+  const visual = m.photo
+    ? `<img src="${root}${m.photo}-sm.jpg" alt="${esc(m.photoAlt)}" loading="lazy" width="640" height="800">`
+    : machineSVG(m.art, uid + '-' + m.id);
+  return `
+  <article class="m-card reveal">
+    <a class="m-visual ${m.photo ? 'has-photo' : ''}" href="${root}${m.page}" tabindex="-1" aria-hidden="true"><span class="m-tag ${m.tag === 'Specialty' ? 'hot' : ''}">${esc(m.tag)}</span>${visual}</a>
+    <div class="m-body">
+      <h3><a href="${root}${m.page}">${esc(m.name)}</a></h3>
+      <p>${esc(m.short)}</p>
+      <div class="m-foot">
+        <a class="btn btn-primary btn-sm" href="${root}contact/?machine=${m.id}" data-machine="${m.id}">Contact us for pricing</a>
+        <a class="m-more" href="${root}${m.page}" aria-label="View ${esc(m.name)}">→</a>
+      </div>
+    </div>
+  </article>`;
+}
+
+/* ---------- Enquiry forms (contact, venues) ----------
+   Collects the form fields and opens the visitor's email app addressed to ENQUIRY_EMAIL.
+   Replace with a form service (e.g. Formspree) later if you'd rather not rely on email apps. */
+function mountEnquiryForm(form, { subject, note }) {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const name = (fd.get('name') || '').trim(), email = (fd.get('email') || '').trim();
+    if (!name || !/^\S+@\S+\.\S+$/.test(email)) {
+      note.textContent = 'Please add your name and a valid email.';
+      (!name ? form.elements.name : form.elements.email).focus();
+      return;
+    }
+    const lines = [];
+    form.querySelectorAll('[data-label]').forEach(el => {
+      const label = el.dataset.label;
+      let v;
+      if (el.matches('fieldset')) v = [...el.querySelectorAll('input:checked')].map(i => i.value).join(', ');
+      else v = el.value;
+      lines.push(`${label}: ${v && v.trim() ? v.trim() : '-'}`);
+    });
+    const subj = typeof subject === 'function' ? subject(fd) : subject;
+    location.href = `mailto:${ENQUIRY_EMAIL}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(lines.join('\n'))}`;
+    note.textContent = `Your email app should open now with everything filled in. If it doesn't, email us at ${ENQUIRY_EMAIL}.`;
+  });
+}
 
 
 /* ---------- Machine illustrations (SVG) ---------- */
@@ -274,6 +339,13 @@ function initChrome() {
   menuBtn.onclick = () => { const o = nav.classList.toggle('open'); menuBtn.setAttribute('aria-expanded', o); };
   $('#navLinks').addEventListener('click', e => { if (e.target.tagName === 'A') { nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', false); } });
   const year = $('#year'); if (year) year.textContent = new Date().getFullYear();
+
+  // Remember which machine a "Contact us for pricing" link was for, so the contact page can pre-select it
+  // (works even where the page address can't carry ?machine=...)
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-machine]');
+    if (a) saveEnquiry({ machine: a.dataset.machine });
+  });
 
   const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 5) * 60 + 'ms'; io.observe(el); });

@@ -11,8 +11,8 @@ export const TODAY = '2026-10-07';
 
 // Pull MACHINES, CATEGORIES and machineSVG out of the browser file so there is one source of truth.
 const siteSrc = fs.readFileSync(path.join(ROOT, 'site.js'), 'utf8');
-export const { MACHINES, CATEGORIES, machineSVG, esc } =
-  new Function(siteSrc + '\nreturn { MACHINES, CATEGORIES, machineSVG, esc };')();
+export const { MACHINES, CATEGORIES, INCLUDED, ENQUIRY_EMAIL, machineSVG, machineCard, esc } =
+  new Function(siteSrc + '\nreturn { MACHINES, CATEGORIES, INCLUDED, ENQUIRY_EMAIL, machineSVG, machineCard, esc };')();
 export const machine = id => MACHINES.find(m => m.id === id);
 
 export const pages = [];   // collected for sitemap.xml
@@ -85,7 +85,12 @@ export function faqBlock(faqs) {
   return { html, ld };
 }
 
-export function ctaBand(root, { h, p, primary = ['Get pricing', 'index.html#enquire'], secondary }) {
+/** "Included with every machine" grid. */
+export function includedGrid() {
+  return `<div class="incl reveal">${INCLUDED.map(([h, p]) => `<div class="incl-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><div><b>${esc(h)}</b><span>${esc(p)}</span></div></div>`).join('')}</div>`;
+}
+
+export function ctaBand(root, { h, p, primary = ['Contact us for pricing', 'contact/'], secondary }) {
   return `<div class="cta-band reveal">
     <div><h2>${h}</h2>${p ? `<p>${p}</p>` : ''}</div>
     <div class="btns">
@@ -97,10 +102,10 @@ export function ctaBand(root, { h, p, primary = ['Get pricing', 'index.html#enqu
 
 const NAV = [
   ['machines', 'Machines', 'machines/'],
-  ['how', 'How it works', 'index.html#how'],
+  ['build', 'Build your machine', 'build/'],
+  ['venues', 'For venues', 'venues/'],
   ['blog', 'Blog', 'blog/'],
   ['quiz', 'Quiz', 'quiz/'],
-  ['about', 'About', 'index.html#about'],
   ['login', 'Log in', 'dashboard/']
 ];
 
@@ -140,7 +145,7 @@ ${jsonld.map(j => `<script type="application/ld+json">${JSON.stringify(j)}</scri
     <nav class="nav-links" id="navLinks">
       ${NAV.map(([k, label, href]) => `<a href="${root}${href}"${k === active ? ' aria-current="page"' : ''}>${label}</a>`).join('\n      ')}
     </nav>
-    <a href="${root}index.html#enquire" class="btn btn-primary nav-cta">Enquire <span class="arrow">→</span></a>
+    <a href="${root}contact/" class="btn btn-primary nav-cta">Contact <span class="arrow">→</span></a>
     <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -160,10 +165,11 @@ ${typeof body === 'function' ? body(root) : body}
       <a href="${root}index.html" class="logo">VNDR<b>.</b></a>
       <nav>
         <a href="${root}machines/">Machines</a>
-        <a href="${root}machines/ramen-vending-machine/">Ramen machines</a>
+        <a href="${root}build/">Build your machine</a>
+        <a href="${root}venues/">For venues</a>
         <a href="${root}blog/">Blog</a>
         <a href="${root}quiz/">Quizzes</a>
-        <a href="${root}index.html#enquire">Enquire</a>
+        <a href="${root}contact/">Contact</a>
         <a href="${root}dashboard/">Operator login</a>
       </nav>
       <span>© <span id="year"></span> VNDR. Vending empire, simplified.</span>

@@ -253,8 +253,9 @@ h3 { font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -0.02em; line-height: 
 .m-body h3 { font-size: 21px; }
 .m-body p { color: var(--ink-soft); font-size: 14px; }
 .m-foot { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 16px; }
-.m-price { font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
-.m-price small { display: block; font-family: var(--mono); font-weight: 400; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
+.m-body h3 a { color: inherit; }
+.m-body h3 a:hover { color: var(--accent); }
+.m-foot { gap: 10px; }
 .m-more { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line-strong); display: grid; place-items: center; transition: background .2s, color .2s; }
 .m-card:hover .m-more { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 @media (max-width: 1100px) { .machine-grid, #machineGrid { grid-template-columns: repeat(2, 1fr); } }
@@ -750,3 +751,73 @@ a.m-card { color: inherit; }
   .chip { animation: none; }
   *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
 }
+
+/* ---------- Small buttons ---------- */
+.btn-sm { height: 40px; padding: 0 16px; font-size: 13px; }
+
+/* ---------- Included with every machine ---------- */
+.incl { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.incl-item { display: flex; gap: 12px; padding: 20px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); }
+.incl-item svg { width: 20px; height: 20px; flex: none; color: var(--accent); margin-top: 2px; }
+.incl-item b { display: block; font-family: var(--display); font-size: 16px; margin-bottom: 4px; }
+.incl-item span { color: var(--ink-soft); font-size: 14px; }
+
+/* ---------- Contact / venues ---------- */
+.next-steps { list-style: none; counter-reset: s; padding: 0; margin: 28px 0; display: flex; flex-direction: column; gap: 18px; }
+.next-steps li { counter-increment: s; display: grid; grid-template-columns: 40px 1fr; gap: 2px 14px; }
+.next-steps li::before { content: counter(s, decimal-leading-zero); grid-row: span 2; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line-strong); display: grid; place-items: center; font-family: var(--mono); font-size: 12px; color: var(--accent); }
+.next-steps b { font-family: var(--display); font-size: 17px; }
+.next-steps span { color: var(--ink-soft); font-size: 14px; }
+.side-card { display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--card); margin-top: 12px; }
+.side-card span { color: var(--ink-soft); font-size: 14px; }
+.side-card .mail { font-family: var(--mono); color: var(--ink); user-select: all; }
+.side-card.link:hover { border-color: var(--accent); }
+fieldset.f { border: 0; padding: 0; margin: 0; min-width: 0; }
+fieldset.f legend { font-size: 13px; color: var(--ink-soft); margin-bottom: 8px; padding: 0; }
+
+/* ---------- Build your machine ---------- */
+form.cfg { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 40px; align-items: start; background: none; border: 0; padding: 0; border-radius: 0; }
+.cfg-steps { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.cfg-step { border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); padding: 22px; margin: 0; min-width: 0; }
+.cfg-step legend { float: left; width: 100%; font-family: var(--display); font-weight: 600; font-size: 19px; margin-bottom: 16px; padding: 0; display: flex; align-items: center; gap: 12px; }
+.cfg-step legend .n { font-family: var(--mono); font-weight: 400; font-size: 12px; color: var(--accent); }
+.cfg-step > *:not(legend) { clear: both; }
+.opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+.opts-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.opt { position: relative; cursor: pointer; display: block; }
+.opt input { position: absolute; opacity: 0; pointer-events: none; }
+.opt-body { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line-strong); background: var(--bg); transition: border-color .2s, background .2s; }
+.opt-body img { width: calc(100% + 32px); margin: -14px -16px 10px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 13px 13px 0 0; display: block; height: auto; }
+.opt-body b { font-family: var(--display); font-size: 15px; }
+.opt-body small { color: var(--ink-soft); font-size: 13px; line-height: 1.4; }
+.opt-body .inc { display: inline-block; margin-top: 6px; font-style: normal; font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.opt-body small .inc { display: block; }
+.opt:hover .opt-body { border-color: var(--ink-soft); }
+.opt input:checked + .opt-body { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.opt input:focus-visible + .opt-body { outline: 2px solid var(--accent); outline-offset: 2px; }
+.opt input:disabled:not(:checked) + .opt-body { opacity: .35; cursor: not-allowed; }
+.opt input[type=checkbox]:disabled:checked + .opt-body { cursor: default; }
+.cfg-note { display: flex; gap: 8px; align-items: center; margin-top: 12px; font-size: 13px; color: var(--ink-soft); }
+.cfg-note svg { width: 16px; height: 16px; color: var(--accent); flex: none; }
+.cfg-row { display: grid; grid-template-columns: 200px 1fr; gap: 16px; }
+.qty { display: flex; border: 1px solid var(--line-strong); border-radius: 12px; overflow: hidden; background: var(--bg); }
+.qty button { width: 46px; font-size: 20px; color: var(--ink); background: none; border: 0; cursor: pointer; }
+.qty button:hover { color: var(--accent); }
+.f .qty input { border: 0; border-radius: 0; text-align: center; padding: 14px 0; -moz-appearance: textfield; }
+.qty input::-webkit-inner-spin-button, .qty input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.cfg-sum { position: sticky; top: 96px; border: 1px solid var(--line-strong); border-radius: 22px; background: var(--card); padding: 18px; }
+.cfg-photo { margin: 0; border-radius: 14px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--bg); max-height: 360px; width: 100%; }
+.cfg-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cfg-sum h2 { font-size: 24px; }
+.sum-list { margin: 14px 0 0; display: flex; flex-direction: column; }
+.sum-list div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+.sum-list dt { color: var(--ink-soft); }
+.sum-list dd { margin: 0; text-align: right; }
+.sum-inc { margin-top: 14px; font-size: 13px; }
+.sum-inc summary { cursor: pointer; color: var(--accent); }
+.sum-inc ul { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-direction: column; gap: 6px; color: var(--ink-soft); }
+.sum-inc li { display: flex; gap: 8px; align-items: center; }
+.sum-inc svg { width: 14px; height: 14px; color: var(--accent); flex: none; }
+@media (max-width: 980px) { form.cfg { grid-template-columns: 1fr; } .cfg-sum { position: static; } .cfg-photo { max-height: 300px; aspect-ratio: auto; height: 300px; } .opts-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .cfg-row { grid-template-columns: 1fr; } .cfg-step { padding: 16px; } }
+[hidden] { display: none !important; }

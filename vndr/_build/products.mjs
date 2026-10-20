@@ -1,5 +1,5 @@
-// Product pages. Text lives here; machine names, prices, features and specs come from site.js.
-import { MACHINES, CATEGORIES, machine, machineSVG, esc, writePage, slot, art, photo, PHOTOS, icon, crumbs, faqBlock, ctaBand, BASE_URL } from './lib.mjs';
+// Product pages. Text lives here; machine names, features and specs come from site.js.
+import { MACHINES, CATEGORIES, machine, machineSVG, machineCard, includedGrid, esc, writePage, slot, art, photo, PHOTOS, icon, crumbs, faqBlock, ctaBand, BASE_URL } from './lib.mjs';
 
 const I = {
   screen: '<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M10 18h4"/>',
@@ -44,7 +44,7 @@ const productLd = (m, slug, desc) => ({
   '@context': 'https://schema.org', '@type': 'Product',
   name: m.name, description: desc, brand: { '@type': 'Brand', name: 'VNDR' }, category: 'Vending machines',
   url: BASE_URL + 'machines/' + slug + '/'
-  // Add "image" and "offers" (price + priceCurrency) once real photos and the currency are confirmed.
+  // Prices are not published (visitors contact us for pricing), so there is no "offers" block.
 });
 
 /* =====================================================================
@@ -55,21 +55,23 @@ function ramenPage() {
   const T = machine('ramen');
   const slug = 'ramen-vending-machine';
   const faqs = [
-    { q: 'How much does a ramen vending machine cost?', a: [`The ramen vending machine starts from <strong>$5,997</strong>. The final price can depend on options like a custom wrap and delivery to your area. <a href="../../index.html?machine=ramen#enquire">Ask for a quote</a> and we'll give you the full number up front.`] },
+    { q: 'How much does a ramen vending machine cost?', a: [`Contact us for pricing. Every price includes shipping to your nearest port, the custom wrap, a Nayax card reader, online monitoring, setup help and warranty. <a href="../../contact/?machine=ramen">Ask for a quote</a> and we'll give you the full number up front.`] },
     { q: 'Do I need to connect the machine to a water supply?', a: ['The machine has its own independent water storage, so it\'s refilled rather than plumbed in. That gives you much more freedom over where it can go. Ask us about tank capacity and the refill routine.'] },
     { q: 'What products can I sell in a ramen vending machine?', a: ['Cup and bowl instant noodles are the core range. Think a mix of mild crowd-pleasers, spicy options, and vegetarian or vegan choices. The cutlery compartment means customers get a fork or chopsticks with their meal. Many operators also rotate a "featured" or premium noodle to keep regulars interested.'] },
     { q: 'Where do ramen vending machines work best?', a: ['Anywhere people are hungry, short on time and short on options: universities and student accommodation, hospitals, transport hubs, warehouses and distribution centres with shift workers, gyms, and late-night entertainment venues. See the <a href="#locations">locations section</a> above for what makes each one work.'] },
-    { q: 'Can I put my own branding on the machine?', a: ['Yes. The ramen machine can be finished with a custom branded wrap, whether that\'s your vending business\'s brand, the venue\'s branding, or a design built around the product. A strong wrap is one of the easiest ways to make the machine stand out.'] },
+    { q: 'Can I put my own branding on the machine?', a: ['Yes, and the custom wrap is included. Use your vending business\'s brand, the venue\'s branding, or a design built around the product. A strong wrap is one of the easiest ways to make the machine stand out.'] },
+    { q: 'Can I change the water temperature?', a: ['Yes. The hot water is temperature controlled, and you can adjust it directly on the machine.'] },
     { q: 'Can I check sales and stock remotely?', a: ['Yes. The machine includes online machine monitoring, so you can keep an eye on it without being there.'] },
     { q: 'Is a ramen vending machine profitable?', a: ['It can be, but no machine is profitable in the wrong location. Your results come down to foot traffic, how many sales you make per day, your selling price, product cost and any commission you pay the site. Use the <a href="#calculator">calculator on this page</a> to test scenarios, then talk to us about your location.'] },
     { q: 'Do you help with finding a location?', a: ['Yes. VNDR is built around the whole journey: machine, location, stock, launch, scale. We\'ll help you work out what makes a location worth pursuing and how to approach the business that owns it. Read our <a href="../../blog/how-to-find-vending-machine-locations/">guide to finding vending locations</a> to get started.'] },
-    { q: 'How is the machine delivered?', a: ['Delivery details and timing depend on your location. <a href="../../index.html?machine=ramen#enquire">Send us an enquiry</a> and we\'ll confirm shipping for your area.'] }
+    { q: 'Do you ship to my country?', a: ['We ship worldwide. Shipping to your nearest port is included in the price, and we can also deliver straight to your door. Every machine is set up for the power supply in your country.'] },
+    { q: 'How do customers pay?', a: ['Every machine comes with a Nayax card reader for card, tap and phone payments. You can also choose a cash slot at no extra cost.'] },
+    { q: 'What support do I get?', a: ['We help you set up, and you get a step-by-step booklet on how to run the machine. Every machine is covered by warranty, with ongoing support for maintenance.'] },
   ];
   const crumb = crumbs('../../', [['Home', 'index.html'], ['Machines', 'machines/'], ['Ramen vending machine']]);
   const faq = faqBlock(faqs);
-  const desc = 'Ramen vending machines with hot water on demand. Touchscreen ordering, from $5,997. Features, specs, best locations, what to stock, and FAQs.';
+  const desc = 'Ramen vending machine with touchscreen ordering and temperature-controlled hot water. Ships worldwide. Features, specs, best locations, what to stock, and FAQs.';
 
-  const specKeys = ['Interface', 'Temperature', 'Dimensions', 'Capacity', 'Suitable products', 'Ideal locations', 'Shipping'];
   const sv = (m, k) => k === 'Interface' ? m.interface : k === 'Temperature' ? m.temp : m.specs[k];
 
   writePage({
@@ -91,15 +93,16 @@ function ramenPage() {
         <div class="eyebrow reveal">Specialty vending</div>
         <h1 class="reveal">Ramen vending machine.</h1>
         <p class="lede reveal">Hot noodles, served in seconds, at any hour. A specialty vending machine with an interactive touchscreen and an integrated hot-water system.</p>
-        <div class="pd-price reveal"><small>From</small><b>$5,997</b></div>
         <dl class="pd-quick reveal">
           <div><dt>Ordering</dt><dd>Interactive touchscreen</dd></div>
           <div><dt>Serves</dt><dd>Cup &amp; bowl instant noodles</dd></div>
-          <div><dt>Hot water</dt><dd>Integrated, independent storage</dd></div>
-          <div><dt>Branding</dt><dd>Custom wrap available</dd></div>
+          <div><dt>Hot water</dt><dd>Temperature controlled, adjustable</dd></div>
+          <div><dt>Payments</dt><dd>Nayax card reader, optional cash slot</dd></div>
+          <div><dt>Branding</dt><dd>Custom wrap included</dd></div>
+          <div><dt>Shipping</dt><dd>Worldwide</dd></div>
         </dl>
         <div class="pd-ctas reveal">
-          <a href="${root}index.html?machine=ramen#enquire" class="btn btn-primary">Get pricing <span class="arrow">→</span></a>
+          <a href="${root}contact/?machine=ramen" class="btn btn-primary" data-machine="ramen">Contact us for pricing <span class="arrow">→</span></a>
           <a href="#specs" class="btn btn-ghost">Full specs</a>
         </div>
       </div>
@@ -186,10 +189,10 @@ function ramenPage() {
       <div>
         <div class="eyebrow reveal">Make it yours</div>
         <h2 class="reveal">A machine with a personality.</h2>
-        <p class="reveal">The ramen machine can carry a <strong>custom branded wrap</strong>. Use it to build your own vending brand across multiple machines, to match a venue's look, or to go bold with a design built around the food.</p>
+        <p class="reveal">Every ramen machine comes with a <strong>custom branded wrap</strong>, included in the price. Use it to build your own vending brand across multiple machines, to match a venue's look, or to go bold with a design built around the food.</p>
         <p class="reveal">A great wrap does real work: it pulls people across the room, makes the machine part of the venue rather than an afterthought, and gives you something worth posting about.</p>
         <p class="reveal">Take <strong>Right Away Ramen</strong>: their wrap carries their mascot, their website and a simple "Don't forget to tag us" with their Instagram handle. Every customer becomes a chance to be seen.</p>
-        <a href="${root}index.html?machine=ramen#enquire" class="btn btn-ghost reveal">Ask about wraps</a>
+        <a href="${root}contact/?machine=ramen" class="btn btn-ghost reveal">Ask about wraps</a>
       </div>
       <div class="reveal">${photo(root, { p: PHOTOS.collect, ratio: '4x5', pos: '50% 70%', caption: 'Wrap by Right Away Ramen' })}</div>
     </div>
@@ -275,6 +278,13 @@ function ramenPage() {
 </section>
 
 <!-- ===== SPECS ===== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow reveal">Included</div><h2 class="reveal">Included with every machine.</h2></div>
+    ${includedGrid()}
+  </div>
+</section>
+
 <section class="sec" id="specs">
   <div class="wrap">
     <div class="sec-head">
@@ -284,10 +294,9 @@ function ramenPage() {
     <div class="table-wrap reveal">
       <table class="spec-table">
         <tbody>
-          ${specRow('Price', [T.price])}
-          ${specKeys.map(k => specRow(k, [sv(T, k)])).join('')}
-          ${specRow('Online monitoring', ['Yes'])}
-          ${specRow('Custom wrap', ['Yes'])}
+          ${specRow('Interface', [T.interface])}
+          ${specRow('Temperature', [T.temp])}
+          ${Object.entries(T.specs).map(([k, v]) => specRow(k, [v])).join('')}
         </tbody>
       </table>
     </div>
@@ -353,7 +362,7 @@ function ramenPage() {
 
 <section class="sec">
   <div class="wrap">
-    ${ctaBand(root, { h: 'Start with one ramen machine.', p: 'Tell us about your location and we\'ll help you choose the right model, then get you a full quote.', primary: ['Get pricing', 'index.html?machine=ramen#enquire'], secondary: ['Compare all machines', 'machines/'] })}
+    ${ctaBand(root, { h: 'Start with one ramen machine.', p: 'Tell us about your location and we\'ll get you a full quote.', primary: ['Get pricing', 'contact/?machine=ramen'], secondary: ['Compare all machines', 'machines/'] })}
   </div>
 </section>
 `,
@@ -392,7 +401,7 @@ const STANDARD = [
     faqs: [
       { q: 'How is a refrigerated snack machine different from a standard one?', a: ['The whole cabinet is chilled, so you can sell fresh and perishable items like sandwiches, salads and dairy, as well as cold drinks. A <a href="../snack-vending-machine/">non-refrigerated snack machine</a> is limited to shelf-stable products.'] },
       { q: 'Does fresh food mean more work?', a: ['A little. Fresh items have shorter use-by dates, so you\'ll restock more often and rotate stock carefully. Many operators mix fresh items with longer-life chilled snacks to balance it out.'] },
-      { q: 'How much does it cost?', a: ['Pricing is available on enquiry. <a href="../../index.html?machine=snack-chilled#enquire">Ask us for a quote</a>.'] },
+      { q: 'How much does it cost?', a: ['Contact us for pricing. Every price includes shipping to your nearest port, a custom wrap, a Nayax card reader, online monitoring, setup help and warranty. <a href="../../contact/?machine=snack-chilled">Ask us for a quote</a>.'] },
       { q: 'Where does it work best?', a: ['Workplaces, hospitals, campuses and gyms: places where people want a real food option during the day.'] }
     ]
   },
@@ -419,7 +428,7 @@ const STANDARD = [
     faqs: [
       { q: 'Is a snack machine a good first vending machine?', a: ['For many people, yes. It\'s simple to run and products keep for a long time. Read <a href="../../blog/how-to-start-a-vending-machine-business/">how to start a vending business</a> for the full picture.'] },
       { q: 'Can I sell chocolate in a non-refrigerated machine?', a: ['Yes. Just keep in mind that very warm locations can affect chocolate. In hot spots, a <a href="../refrigerated-snack-vending-machine/">refrigerated snack machine</a> may be the better choice.'] },
-      { q: 'How much does it cost?', a: ['Pricing is available on enquiry. <a href="../../index.html?machine=snack#enquire">Ask us for a quote</a>.'] },
+      { q: 'How much does it cost?', a: ['Contact us for pricing. Every price includes shipping to your nearest port, a custom wrap, a Nayax card reader, online monitoring, setup help and warranty. <a href="../../contact/?machine=snack">Ask us for a quote</a>.'] },
       { q: 'Can I sell things other than snacks?', a: ['Yes. Many operators add personal-care items, phone accessories or other small essentials, as long as they fit the spirals.'] }
     ]
   },
@@ -445,7 +454,7 @@ const STANDARD = [
     locations: [['Gyms', 'Water, sports and protein drinks.'], ['Sports centres', 'Big crowds, thirsty players.'], ['Warehouses', 'Hydration for physical work.'], ['Transport hubs', 'Grab-and-go for travellers.']],
     faqs: [
       { q: 'What can I sell in a drink vending machine?', a: ['Cans and bottles: water, soft drinks, energy drinks, sports drinks, protein shakes and iced coffee. Check bottle sizes with us to make sure they suit the machine.'] },
-      { q: 'How much does it cost?', a: ['Pricing is available on enquiry. <a href="../../index.html?machine=drinks#enquire">Ask us for a quote</a>.'] },
+      { q: 'How much does it cost?', a: ['Contact us for pricing. Every price includes shipping to your nearest port, a custom wrap, a Nayax card reader, online monitoring, setup help and warranty. <a href="../../contact/?machine=drinks">Ask us for a quote</a>.'] },
       { q: 'Should I get a drinks machine or a refrigerated snack machine?', a: ['If drinks are the main demand (gyms, sports venues), a dedicated drinks machine gives you more drink capacity. If you want food and drinks from one machine, look at the <a href="../refrigerated-snack-vending-machine/">refrigerated snack machine</a>. Not sure? Try the <a href="../../quiz/which-vending-machine/">machine quiz</a>.'] }
     ]
   }
@@ -455,7 +464,10 @@ function standardPage(p) {
   const m = machine(p.id);
   const cat = CATEGORIES.find(c => c.id === m.category);
   const crumb = crumbs('../../', [['Home', 'index.html'], ['Machines', 'machines/'], [m.name]]);
-  const faq = faqBlock(p.faqs);
+  const faq = faqBlock([...p.faqs,
+    { q: 'Do you ship to my country?', a: ['We ship worldwide. Shipping to your nearest port is included in the price, and we can also deliver straight to your door. Every machine is set up for the power supply in your country.'] },
+    { q: 'How do customers pay?', a: ['Every machine comes with a Nayax card reader for card, tap and phone payments. You can also choose a cash slot at no extra cost.'] },
+    { q: 'What support do I get?', a: ['We help you set up, and you get a step-by-step booklet on how to run the machine. Every machine is covered by warranty, with ongoing support for maintenance.'] }]);
   const desc = `${m.short} ${p.lede.split('. ')[0].replace(/\.$/, '')}. Features, specs, best locations and FAQs.`.slice(0, 158);
   const others = MACHINES.filter(x => x.id !== m.id && x.id !== 'ramen-keypad').slice(0, 3);
   writePage({
@@ -482,14 +494,13 @@ function standardPage(p) {
         <div class="eyebrow reveal">${esc(cat.name)} vending · ${esc(m.tag)}</div>
         <h1 class="reveal">${esc(p.h1)}</h1>
         <p class="lede reveal">${esc(p.lede)}</p>
-        <div class="pd-price reveal">${m.price.startsWith('From') ? `<small>From</small><b>${esc(m.price.replace('From ', ''))}</b>` : `<b class="tbc">${esc(m.price)}</b>`}</div>
         <div class="pills reveal">
           <span class="pill">${icon(m.interface === 'Touchscreen' ? I.screen : I.keypad)}${esc(m.interface)}</span>
           <span class="pill">${icon(p.icon)}${esc(m.temp)}</span>
         </div>
         <ul class="feat-list reveal">${m.features.map(f => `<li>${icon('<path d="M5 12l5 5 9-10"/>')}${esc(f)}</li>`).join('')}</ul>
         <div class="pd-ctas reveal">
-          <a href="${root}index.html?machine=${m.id}#enquire" class="btn btn-primary">Get pricing <span class="arrow">→</span></a>
+          <a href="${root}contact/?machine=${m.id}" class="btn btn-primary" data-machine="${m.id}">Contact us for pricing <span class="arrow">→</span></a>
           <a href="#specs" class="btn btn-ghost">Specs</a>
         </div>
       </div>
@@ -538,13 +549,20 @@ function standardPage(p) {
   </div>
 </section>
 
+<!-- ===== INCLUDED ===== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow reveal">Included</div><h2 class="reveal">Included with every machine.</h2></div>
+    ${includedGrid()}
+  </div>
+</section>
+
 <section class="sec" id="specs">
   <div class="wrap">
     <div class="sec-head"><div class="eyebrow reveal">Specifications</div><h2 class="reveal">Specs.</h2></div>
     <div class="table-wrap reveal">
       <table class="spec-table">
         <tbody>
-          ${specRow('Price', [m.price])}
           ${specRow('Interface', [m.interface])}
           ${specRow('Temperature', [m.temp])}
           ${Object.entries(m.specs).map(([k, v]) => specRow(k, [v])).join('')}
@@ -573,7 +591,7 @@ function standardPage(p) {
 
 <section class="sec">
   <div class="wrap">
-    ${ctaBand(root, { h: `Ready to start with a ${cat.name.toLowerCase()} machine?`, p: 'Tell us about your location and we\'ll come back with pricing and advice.', primary: ['Get pricing', `index.html?machine=${m.id}#enquire`], secondary: ['All machines', 'machines/'] })}
+    ${ctaBand(root, { h: `Ready to start with a ${cat.name.toLowerCase()} machine?`, p: 'Tell us about your location and we\'ll come back with pricing and advice.', primary: ['Get pricing', `contact/?machine=${m.id}`], secondary: ['All machines', 'machines/'] })}
   </div>
 </section>
 `
@@ -622,18 +640,7 @@ function cataloguePage() {
       <p>${esc(c.blurb)}</p>
     </div>
     <div class="machine-grid">
-      ${list.map(m => `
-      <a class="m-card reveal" href="${root}${m.page}">
-        <div class="m-visual ${m.photo ? 'has-photo' : ''}"><span class="m-tag ${m.tag === 'Specialty' ? 'hot' : ''}">${esc(m.tag)}</span>${m.photo ? `<img src="${root}${m.photo}-sm.jpg" alt="${esc(m.photoAlt)}" loading="lazy" width="640" height="800">` : machineSVG(m.art, 'cat-' + m.id)}</div>
-        <div class="m-body">
-          <h3>${esc(m.name)}</h3>
-          <p>${esc(m.short)}</p>
-          <div class="m-foot">
-            <div class="m-price"><small>${m.price.startsWith('From') ? 'From' : 'Pricing'}</small>${esc(m.price.replace(/^From\s*/, '').replace('Price on enquiry', 'On enquiry'))}</div>
-            <span class="m-more" aria-hidden="true">→</span>
-          </div>
-        </div>
-      </a>`).join('')}
+      ${list.map(m => machineCard(m, root, 'cat')).join('')}
     </div>
   </section>`;
   }).join('')}
@@ -647,18 +654,18 @@ function cataloguePage() {
     </div>
     <div class="table-wrap reveal">
       <table class="cmp">
-        <thead><tr><th>Machine</th><th>Category</th><th>Interface</th><th>Temperature</th><th>Great for</th><th>Price</th></tr></thead>
+        <thead><tr><th>Machine</th><th>Category</th><th>Interface</th><th>Temperature</th><th>Great for</th><th></th></tr></thead>
         <tbody>
           ${MACHINES.map(m => `<tr>
             <td><a href="${root}${m.page}">${esc(m.name)}</a></td>
             <td>${esc(CATEGORIES.find(c => c.id === m.category).name)}</td>
             <td>${esc(m.interface)}</td><td>${esc(m.temp)}</td>
             <td>${esc(m.specs['Ideal locations'].split(', ').slice(0, 3).join(', '))}</td>
-            <td class="${m.price.startsWith('From') ? '' : 'muted'}">${esc(m.price)}</td></tr>`).join('')}
+            <td><a href="${root}contact/?machine=${m.id}" data-machine="${m.id}">Contact us for pricing</a></td></tr>`).join('')}
         </tbody>
       </table>
     </div>
-    <div style="margin-top:120px">${ctaBand(root, { h: 'Not sure which machine?', p: 'Take the quiz, or tell us about your location and we\'ll help you choose.', primary: ['Take the quiz', 'quiz/which-vending-machine/'], secondary: ['Ask us', 'index.html#enquire'] })}</div>
+    <div style="margin-top:120px">${ctaBand(root, { h: 'Not sure which machine?', p: 'Take the quiz, or tell us about your location and we\'ll help you choose.', primary: ['Take the quiz', 'quiz/which-vending-machine/'], secondary: ['Ask us', 'contact/'] })}</div>
   </div>
 </section>
 `,

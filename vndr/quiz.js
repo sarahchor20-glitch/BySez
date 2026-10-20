@@ -133,7 +133,7 @@ function renderMachineResult(answers, root) {
         <ul>${(MACHINE_REASONS[top.id] || []).map(r => `<li>${esc(r)}</li>`).join('')}</ul>
         <div class="q-actions">
           <a class="btn btn-primary" href="${root}${top.page}">View machine <span class="arrow">→</span></a>
-          <a class="btn btn-ghost" href="${root}index.html?machine=${top.id}#enquire">Get pricing</a>
+          <a class="btn btn-ghost" href="${root}contact/?machine=${top.id}">Get pricing</a>
         </div>
       </div>
     </div>

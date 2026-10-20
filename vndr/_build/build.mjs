@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, BASE_URL, TODAY, pages, writePage, slot, photo, PHOTOS, crumbs, ctaBand, esc } from './lib.mjs';
 import { buildProducts } from './products.mjs';
+import { buildPages } from './pages.mjs';
 import { POSTS } from './posts.mjs';
 
 const readMins = html => Math.max(2, Math.round(html.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length / 220));
@@ -110,7 +111,7 @@ function article(p) {
 </section>
 <section class="sec">
   <div class="wrap">
-    ${ctaBand(root, { h: 'Ready to start your vending business?', p: 'Tell us what you\'re planning and we\'ll help you choose the right first machine.', primary: ['Talk to VNDR', 'index.html#enquire'], secondary: ['Browse machines', 'machines/'] })}
+    ${ctaBand(root, { h: 'Ready to start your vending business?', p: 'Tell us what you\'re planning and we\'ll help you choose the right first machine.', primary: ['Talk to VNDR', 'contact/'], secondary: ['Browse machines', 'machines/'] })}
   </div>
 </section>`
   });
@@ -129,7 +130,7 @@ const QUIZZES = [
     after: `
       <h2>How the quiz works</h2>
       <p>Every machine suits different locations and different operators. A <a href="{{root}}machines/drink-vending-machine/">drinks machine</a> thrives in a gym. A <a href="{{root}}machines/ramen-vending-machine/">ramen machine</a> shines in student housing at midnight. The quiz weighs your answers about location, timing, customers, effort and budget to point you at the best starting machine.</p>
-      <p>It's a starting point, not a final answer. Your exact location matters most. Read <a href="{{root}}blog/how-to-find-vending-machine-locations/">how to find great vending locations</a>, or <a href="{{root}}index.html#enquire">ask us</a> about your site.</p>`
+      <p>It's a starting point, not a final answer. Your exact location matters most. Read <a href="{{root}}blog/how-to-find-vending-machine-locations/">how to find great vending locations</a>, or <a href="{{root}}contact/">ask us</a> about your site.</p>`
   },
   {
     slug: 'is-vending-right-for-you',
@@ -199,7 +200,7 @@ function quizPage(q) {
 </div>
 <section class="sec">
   <div class="wrap">
-    ${ctaBand(root, { h: 'Prefer to talk it through?', p: 'Tell us about your plans and we\'ll give you an honest recommendation.', primary: ['Talk to VNDR', 'index.html#enquire'], secondary: ['Browse machines', 'machines/'] })}
+    ${ctaBand(root, { h: 'Prefer to talk it through?', p: 'Tell us about your plans and we\'ll give you an honest recommendation.', primary: ['Talk to VNDR', 'contact/'], secondary: ['Browse machines', 'machines/'] })}
   </div>
 </section>`,
     scripts: root => `<script src="${root}quiz.js"></script>\n${q.script(root)}`
@@ -208,6 +209,7 @@ function quizPage(q) {
 
 /* ---------- Run ---------- */
 buildProducts();
+buildPages();
 blogIndex();
 POSTS.forEach(article);
 quizHub();

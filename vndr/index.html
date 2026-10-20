@@ -19,13 +19,12 @@
 
 <!--
   ============================== QUICK EDIT GUIDE ==============================
-  • Machines (names, prices, specs) live in ONE place: the MACHINES list near the
-    bottom of this file, inside <script>. Edit text there — the cards and the
-    detail pop-ups update automatically.
-  • Fields marked "On enquiry" are placeholders. Replace them with real specs
-    (dimensions, capacity, shipping) when you have them.
-  • Enquiry email: change ENQUIRY_EMAIL (top of <script>). The form opens the
-    visitor's email app with everything pre-filled and sends it there.
+  • Machines (names, specs, photos) and the "Included with every machine" list
+    live in ONE place: site.js. Edit them there and rebuild (node _build/build.mjs)
+    so the product pages update too. Prices are deliberately not shown: every
+    machine links to the contact page ("Contact us for pricing").
+  • Enquiry email: change ENQUIRY_EMAIL at the top of site.js. The contact and
+    venue forms open the visitor's email app with everything pre-filled.
   • Colours: change --accent in :root below to re-theme the whole site.
   =============================================================================
 -->
@@ -40,13 +39,13 @@
     <a href="#top" class="logo" aria-label="VNDR home">VNDR<b>.</b></a>
     <nav class="nav-links" id="navLinks">
       <a href="machines/">Machines</a>
-      <a href="#how">How it works</a>
+      <a href="build/">Build your machine</a>
+      <a href="venues/">For venues</a>
       <a href="blog/">Blog</a>
       <a href="quiz/">Quiz</a>
-      <a href="#about">About</a>
       <a href="dashboard/">Log in</a>
     </nav>
-    <a href="#enquire" class="btn btn-primary nav-cta">Enquire <span class="arrow">→</span></a>
+    <a href="contact/" class="btn btn-primary nav-cta">Contact <span class="arrow">→</span></a>
     <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -62,8 +61,8 @@
         <h1 class="reveal">Build your vending empire.<span class="line2">We'll simplify the rest.</span></h1>
         <p class="lede reveal">Commercial vending machines, specialty vending concepts and the resources you need to turn vending into a real business.</p>
         <div class="hero-ctas reveal">
-          <a href="machines/" class="btn btn-primary">Shop machines <span class="arrow">→</span></a>
-          <a href="#how" class="btn btn-ghost">How it works</a>
+          <a href="build/" class="btn btn-primary">Build your machine <span class="arrow">→</span></a>
+          <a href="machines/" class="btn btn-ghost">Browse machines</a>
         </div>
       </div>
       <div class="hero-visual reveal" id="heroVisual">
@@ -143,8 +142,8 @@
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="3" width="12" height="18" rx="3"/><path d="M6 12h12"/></svg>Independent water storage</div>
         </div>
         <div class="price-row reveal">
-          <div class="big-price"><small>From</small>$5,997</div>
-          <a class="btn btn-primary" href="machines/ramen-vending-machine/">Explore ramen machines <span class="arrow">→</span></a>
+          <a class="btn btn-primary" href="contact/?machine=ramen" data-machine="ramen">Contact us for pricing <span class="arrow">→</span></a>
+          <a class="btn btn-ghost" href="machines/ramen-vending-machine/">Explore the ramen machine</a>
         </div>
       </div>
     </div>
@@ -223,7 +222,7 @@
       <div>
         <div class="eyebrow reveal">Free resources</div>
         <h3 class="reveal" style="font-size: clamp(28px, 3vw, 40px);">Tools to take the guesswork out.</h3>
-        <p class="muted reveal" style="margin-top: 16px; max-width: 36ch;">Request any of these and we'll send it straight to your inbox.</p>
+        <p class="muted reveal" style="margin-top: 16px; max-width: 36ch;">Request any of these and we'll send it to your inbox.</p>
       </div>
       <div class="res-list" id="resList"></div>
     </div>
@@ -252,37 +251,21 @@
   </div>
 </section>
 
-<!-- ============ ENQUIRE ============ -->
-<section class="enquire" id="enquire">
+<!-- ============ INCLUDED + CONTACT ============ -->
+<section class="sec" id="included">
   <div class="wrap">
-    <div class="enq-grid">
-      <div>
-        <div class="eyebrow reveal">Ready when you are</div>
-        <h2 class="reveal">Let's build your first machine.</h2>
-        <div class="enq-points reveal">
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l5 5 9-10"/></svg>Pricing and availability for any machine</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l5 5 9-10"/></svg>Honest advice on which machine suits your plan</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l5 5 9-10"/></svg>Help thinking through your location</div>
-        </div>
+    <div class="sec-head">
+      <div class="eyebrow reveal">Included</div>
+      <h2 class="reveal">Included with every machine.</h2>
+      <p class="lede reveal" style="margin-top:16px">No surprise add-ons. Every machine comes ready for your country, with shipping to your nearest port.</p>
+    </div>
+    <div id="inclGrid" class="incl reveal"></div>
+    <div class="cta-band reveal" style="margin-top:48px">
+      <div><h2>Let's build your first machine.</h2><p>Tell us what you're after and where you are. We'll send pricing and next steps.</p></div>
+      <div class="btns">
+        <a href="contact/" class="btn">Contact us for pricing <span class="arrow">→</span></a>
+        <a href="venues/" class="btn alt">I have a venue</a>
       </div>
-      <form id="enqForm" class="reveal" novalidate>
-        <div class="f"><label for="fName">Name</label><input id="fName" name="name" autocomplete="name" required></div>
-        <div class="f"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" autocomplete="email" required></div>
-        <div class="f"><label for="fPhone">Phone <span class="muted">(optional)</span></label><input id="fPhone" name="phone" type="tel" autocomplete="tel"></div>
-        <div class="f"><label for="fMachine">Interested in</label><select id="fMachine" name="machine"></select></div>
-        <div class="f full">
-          <label>Where are you at?</label>
-          <div class="stage">
-            <label><input type="radio" name="stage" value="Brand new to vending" checked><span>Brand new</span></label>
-            <label><input type="radio" name="stage" value="Side hustle"><span>Side hustle</span></label>
-            <label><input type="radio" name="stage" value="Investor"><span>Investor</span></label>
-            <label><input type="radio" name="stage" value="Existing operator"><span>Existing operator</span></label>
-          </div>
-        </div>
-        <div class="f full"><label for="fMsg">Anything else? <span class="muted">(location ideas, questions, timeline)</span></label><textarea id="fMsg" name="message"></textarea></div>
-        <button type="submit" class="btn btn-primary">Send enquiry <span class="arrow">→</span></button>
-        <p class="form-note" id="formNote">Opens your email app with your details filled in.</p>
-      </form>
     </div>
   </div>
 </section>
@@ -301,11 +284,12 @@
       <a href="#top" class="logo">VNDR<b>.</b></a>
       <nav>
         <a href="machines/">Machines</a>
-        <a href="machines/ramen-vending-machine/">Ramen machines</a>
+        <a href="build/">Build your machine</a>
+        <a href="venues/">For venues</a>
         <a href="blog/">Blog</a>
         <a href="quiz/">Quizzes</a>
+        <a href="contact/">Contact</a>
         <a href="dashboard/">Operator login</a>
-        <a href="#enquire">Enquire</a>
       </nav>
       <span>© <span id="year"></span> VNDR. Vending empire, simplified.</span>
     </div>
@@ -316,7 +300,6 @@
 <script src="site.js"></script>
 <script>
 /* =================== EDIT ME =================== */
-const ENQUIRY_EMAIL = 'hello@vndr.com';   // ← replace with your real enquiry inbox
 
 const LOCATIONS = [
   ['Universities', 'Thousands of students, long days, tight budgets.', 'cap'],
@@ -375,18 +358,10 @@ const icon = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" st
 /* ---------- Render ---------- */
 
 
-$('#machineGrid').innerHTML = MACHINES.map(m => `
-  <a class="m-card reveal" href="${m.page}">
-    <div class="m-visual ${m.photo ? 'has-photo' : ''}"><span class="m-tag ${m.tag === 'Specialty' ? 'hot' : ''}">${esc(m.tag)}</span>${m.photo ? `<img src="${m.photo}-sm.jpg" alt="${esc(m.photoAlt)}" loading="lazy" width="640" height="800">` : machineSVG(m.art, 'card-' + m.id)}</div>
-    <div class="m-body">
-      <h3>${esc(m.name)}</h3>
-      <p>${esc(m.short)}</p>
-      <div class="m-foot">
-        <div class="m-price"><small>${priceLabel(m)}</small>${esc(priceValue(m))}</div>
-        <span class="m-more" aria-hidden="true">→</span>
-      </div>
-    </div>
-  </a>`).join('');
+$('#machineGrid').innerHTML = MACHINES.map(m => machineCard(m, '', 'card')).join('');
+
+const tick = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>';
+$('#inclGrid').innerHTML = INCLUDED.map(([h, p]) => `<div class="incl-item">${tick}<div><b>${esc(h)}</b><span>${esc(p)}</span></div></div>`).join('');
 
 $('#locGrid').innerHTML = LOCATIONS.map(([n, d, i]) => `<div class="loc reveal">${icon(i)}<h4>${esc(n)}</h4><p>${esc(d)}</p></div>`).join('');
 
@@ -398,40 +373,16 @@ $('#learnGrid').innerHTML = GUIDES.map(([g, href, label], i) => `
 
 $('#resList').innerHTML = RESOURCES.map(r => `<button class="res reveal" data-resource="${esc(r)}"><span>${esc(r)}</span><small>Request →</small></button>`).join('');
 
-$('#fMachine').innerHTML = `<option value="Not sure yet">Not sure yet</option>` + MACHINES.map(m => `<option>${esc(m.name)}</option>`).join('');
-
-/* ---------- Resource requests -> enquiry form ---------- */
+/* ---------- Resource requests -> contact page ---------- */
 document.addEventListener('click', e => {
   const r = e.target.closest('[data-resource]');
   if (!r) return;
-  const msg = $('#fMsg');
-  const line = `Please send me: ${r.dataset.resource}`;
-  if (!msg.value.includes(line)) msg.value = (msg.value ? msg.value + '\n' : '') + line;
-  $('#enquire').scrollIntoView({ behavior: 'smooth' });
+  saveEnquiry({ message: `Please send me: ${r.dataset.resource}` });
+  location.href = 'contact/';
 });
 
 /* ---------- Calculator ---------- */
 mountCalc($('#calc'));
-
-/* ---------- Form ---------- */
-$('#enqForm').addEventListener('submit', e => {
-  e.preventDefault();
-  const f = e.target, name = f.name.value.trim(), email = f.email.value.trim();
-  if (!name || !/^\S+@\S+\.\S+$/.test(email)) {
-    $('#formNote').textContent = 'Please add your name and a valid email.';
-    (!name ? f.name : f.email).focus();
-    return;
-  }
-  const body = [
-    `Name: ${name}`, `Email: ${email}`, `Phone: ${f.phone.value || '-'}`,
-    `Interested in: ${f.machine.value}`, `Stage: ${f.stage.value}`, '', f.message.value
-  ].join('\n');
-  location.href = `mailto:${ENQUIRY_EMAIL}?subject=${encodeURIComponent('VNDR enquiry: ' + f.machine.value)}&body=${encodeURIComponent(body)}`;
-  $('#formNote').textContent = 'Thanks! Your email app should open now. Just hit send.';
-});
-
-const pre = MACHINES.find(m => m.id === new URLSearchParams(location.search).get('machine'));
-if (pre) $('#fMachine').value = pre.name;
 
 initChrome();
 </script>

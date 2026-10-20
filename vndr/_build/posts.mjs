@@ -119,7 +119,7 @@ export const POSTS = [
 <h2 id="scale">Step 6: Scale</h2>
 <p>Once your first machine is working, you have something valuable: proof, and a playbook. Reinvest, approach similar sites, and add machines. One machine can become two. Two can become five. Five can become a vending business.</p>
 
-<div class="callout"><b>Want help with step 1 and 2?</b>Tell us about your plans and the locations you're considering, and we'll help you choose the right machine.<br><a class="btn btn-primary" href="{{root}}index.html#enquire">Talk to VNDR →</a></div>
+<div class="callout"><b>Want help with step 1 and 2?</b>Tell us about your plans and the locations you're considering, and we'll help you choose the right machine.<br><a class="btn btn-primary" href="{{root}}contact/">Talk to VNDR →</a></div>
 `,
     related: ['how-to-find-vending-machine-locations', 'what-to-sell-in-a-vending-machine', 'how-much-does-it-cost-to-start-a-vending-business']
   },
@@ -175,7 +175,7 @@ export const POSTS = [
 <h2 id="numbers">Is it profitable?</h2>
 <p>That depends almost entirely on location: daily sales, your price, your product cost and any site commission. Try a few scenarios in the calculator on the <a href="{{root}}machines/ramen-vending-machine/#calculator">ramen machine page</a>, and be conservative with your sales estimate for a brand-new site.</p>
 
-<div class="callout"><b>Thinking about a ramen machine?</b>Tell us where you'd like to put it and we'll help you plan the rest.<br><a class="btn btn-primary" href="{{root}}index.html?machine=ramen#enquire">Get ramen pricing →</a></div>
+<div class="callout"><b>Thinking about a ramen machine?</b>Tell us where you'd like to put it and we'll help you plan the rest.<br><a class="btn btn-primary" href="{{root}}contact/?machine=ramen">Get ramen pricing →</a></div>
 `,
     related: ['how-to-find-vending-machine-locations', 'what-to-sell-in-a-vending-machine', 'is-a-vending-machine-business-a-good-idea']
   },
@@ -244,7 +244,7 @@ export const POSTS = [
 <h2 id="match">Match the machine to the location</h2>
 <p>A gym and a student building need different machines. Use our <a href="{{root}}quiz/which-vending-machine/">machine quiz</a> to match your location to the right machine.</p>
 
-<div class="callout"><b>Got a location in mind?</b>Tell us about it and we'll give you our honest take on what would work there.<br><a class="btn btn-primary" href="{{root}}index.html#enquire">Ask VNDR →</a></div>
+<div class="callout"><b>Got a location in mind?</b>Tell us about it and we'll give you our honest take on what would work there.<br><a class="btn btn-primary" href="{{root}}contact/">Ask VNDR →</a></div>
 `,
     related: ['how-to-start-a-vending-machine-business', 'what-to-sell-in-a-vending-machine', 'ramen-vending-machines-guide']
   },
@@ -320,9 +320,8 @@ export const POSTS = [
 
 <h2 id="upfront">Upfront costs</h2>
 <ul>
-  <li><strong>The machine.</strong> Your biggest single cost. As an example, VNDR's touchscreen ramen vending machine starts from $5,997. Other machines are priced on enquiry. See <a href="{{root}}machines/">all machines</a>.</li>
-  <li><strong>Options.</strong> Things like a custom branded wrap.</li>
-  <li><strong>Delivery and installation</strong> to your location.</li>
+  <li><strong>The machine.</strong> Your biggest single cost. <a href="{{root}}contact/">Contact us for pricing</a>. A VNDR machine's price already includes shipping to your nearest port, a custom wrap, a Nayax card reader, online monitoring, setup help and warranty. See <a href="{{root}}machines/">all machines</a>.</li>
+  <li><strong>Getting it from the port to your site.</strong> Or choose door-to-door delivery.</li>
   <li><strong>Opening stock</strong> to fill the machine, plus a little extra for the first restock.</li>
   <li><strong>Business setup</strong> such as registration, insurance and any permits or approvals your area requires.</li>
 </ul>
@@ -351,7 +350,7 @@ export const POSTS = [
   <li>Use remote monitoring (where available) to restock only when needed</li>
 </ul>
 
-<div class="callout"><b>Want real numbers for your plan?</b>Tell us which machine you're considering and we'll send you a full quote.<br><a class="btn btn-primary" href="{{root}}index.html#enquire">Get a quote →</a></div>
+<div class="callout"><b>Want real numbers for your plan?</b>Tell us which machine you're considering and we'll send you a full quote.<br><a class="btn btn-primary" href="{{root}}contact/">Get a quote →</a></div>
 `,
     related: ['is-a-vending-machine-business-a-good-idea', 'how-to-start-a-vending-machine-business', 'what-to-sell-in-a-vending-machine']
   }

@@ -5,7 +5,8 @@
 |---|---|---|
 | `/vndr/` | `index.html` | Edited by hand |
 | `/vndr/machines/` | `machines/index.html` | Generated |
-| `/vndr/machines/ramen-vending-machine/` (+ 4 other machines) | `machines/*/index.html` | Generated |
+| `/vndr/machines/ramen-vending-machine/` (+ 3 other machines) | `machines/*/index.html` | Generated |
+| `/vndr/build/`, `/vndr/contact/`, `/vndr/venues/` | `build/`, `contact/`, `venues/` | Generated (`_build/pages.mjs`) |
 | `/vndr/blog/` + 6 articles | `blog/**/index.html` | Generated |
 | `/vndr/quiz/` + 2 quizzes | `quiz/**/index.html` | Generated |
 | `/vndr/sitemap.xml` | `sitemap.xml` | Generated |
@@ -14,7 +15,7 @@
 Shared files: `style.css` (all styles), `site.js` (machine list, illustrations, calculator, menu), `quiz.js` (quiz questions and scoring).
 
 ## Changing content
-- **Machine names, prices, features, specs:** `site.js` → `MACHINES`. Then rebuild.
+- **Machine names, features, specs, photos:** `site.js` → `MACHINES`. "Included with every machine": `site.js` → `INCLUDED` (shared specs in `COMMON_SPECS`). Then rebuild. Prices are deliberately not shown; every machine links to `contact/`.
 - **Product page text (ramen page, FAQs, etc.):** `_build/products.mjs`. Then rebuild.
 - **Blog articles:** `_build/posts.mjs`. Copy an existing post to add a new one. Then rebuild.
 - **Quiz questions:** `quiz.js` (no rebuild needed).
@@ -47,8 +48,7 @@ Generated pages are overwritten on rebuild, so either put media into the templat
 
 ## Before launch
 - Change `BASE_URL` in `_build/lib.mjs` (and the canonical link in `index.html`) to your real domain, then rebuild.
-- Replace `ENQUIRY_EMAIL` in `index.html`.
-- Add `priceCurrency` + `offers` to the Product structured data in `_build/products.mjs` once the currency is confirmed.
+- Replace `ENQUIRY_EMAIL` at the top of `site.js` (used by the contact and venue forms).
 - Submit `sitemap.xml` in Google Search Console.
 
 ## Operator dashboard (prototype)
