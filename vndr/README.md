@@ -12,6 +12,8 @@
 | `/vndr/sitemap.xml` | `sitemap.xml` | Generated |
 | `/vndr/dashboard/` | `dashboard/` | Edited by hand (operator dashboard prototype) |
 
+Brand: `images/brand/` has the logo as SVG (dark and white) and transparent PNG. The site draws it from `vndr-logo.svg` as a CSS mask, so it takes the text colour.
+
 Shared files: `style.css` (all styles), `site.js` (machine list, illustrations, calculator, menu), `quiz.js` (quiz questions and scoring).
 
 ## Changing content

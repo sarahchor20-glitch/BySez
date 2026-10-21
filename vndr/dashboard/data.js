@@ -103,7 +103,7 @@ const VNDRData = (() => {
 
   return {
     signIn(email) {
-      const user = { name: 'Alex Jordan', email: email && /\S+@\S+/.test(email) ? email : 'demo@vndr.com', business: 'Jordan Vending Co.' };
+      const user = { name: 'Alex Jordan', email: email && /\S+@\S+/.test(email) ? email : 'demo@vndrglobal.com', business: 'Jordan Vending Co.' };
       store.set(user); return user;
     },
     signOut() { store.set(null); },

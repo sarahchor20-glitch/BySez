@@ -35,7 +35,11 @@ function contactPage() {
         </ol>
         <div class="side-card reveal">
           <b>Prefer email?</b>
-          <span class="mail">${esc(ENQUIRY_EMAIL)}</span>
+          <a class="mail" href="mailto:${esc(ENQUIRY_EMAIL)}">${esc(ENQUIRY_EMAIL)}</a>
+        </div>
+        <div class="side-card reveal">
+          <b>Follow us</b>
+          <span>@VNDRglobal on <a href="https://www.instagram.com/vndrglobal" target="_blank" rel="noopener">Instagram</a>, <a href="https://www.tiktok.com/@vndrglobal" target="_blank" rel="noopener">TikTok</a> and <a href="https://www.facebook.com/vndrglobal" target="_blank" rel="noopener">Facebook</a></span>
         </div>
         <a class="side-card link reveal" href="${root}venues/">
           <b>Got a venue instead?</b>
@@ -122,7 +126,7 @@ function venuesPage() {
         <p class="muted reveal" style="margin-top:12px;max-width:40ch">The more we know about your space, the better we can match the machine. It takes about a minute.</p>
         <div class="side-card reveal" style="margin-top:28px">
           <b>Prefer email?</b>
-          <span class="mail">${esc(ENQUIRY_EMAIL)}</span>
+          <a class="mail" href="mailto:${esc(ENQUIRY_EMAIL)}">${esc(ENQUIRY_EMAIL)}</a>
         </div>
       </div>
       <form id="venueForm" class="reveal" novalidate>
